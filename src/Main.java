@@ -20,12 +20,19 @@ public class Main {
         System.out.println(bike.getInfo());
 
         ParkingSpot bikeSpot = new BikeSpot(bike);
+        ParkingSpot bikeSpot2 = new BikeSpot(bike);
+        ParkingSpot bikeSpot3 = new BikeSpot(bike);
+        ParkingSpot bikeSpot4 = new BikeSpot(bike);
         System.out.println(bikeSpot.getInfo());
 
         Map<SpotType, List<ParkingSpot>> totalSpotsOnFloor = new HashMap<>();
         List<ParkingSpot> parkingSpots = new ArrayList<>();
 
         parkingSpots.add(bikeSpot);
+        parkingSpots.add(bikeSpot2);
+        parkingSpots.add(bikeSpot3);
+        parkingSpots.add(bikeSpot4);
+
         totalSpotsOnFloor.put(SpotType.BIKE, parkingSpots);
 
         Vehicle car = new Car();
@@ -44,20 +51,19 @@ public class Main {
 
 
         ParkingFloor parkingFloor = new ParkingFloor(1, totalSpotsOnFloor);
+        ParkingFloor parkingFloor2 = new ParkingFloor(2, totalSpotsOnFloor);
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.addFloor(parkingFloor);
+        parkingLot.addFloor(parkingFloor2);
+
 
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
-
-        parkingLot.unparkVehicle(car);
-        parkingLot.unparkVehicle(car);
-
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
-        parkingLot.parkVehicle(car);
+        parkingLot.summary();
 
 
 

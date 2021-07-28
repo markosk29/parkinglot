@@ -32,11 +32,12 @@ public class ParkingLot {
         for (ParkingFloor pf : floors
         ) {
             if (pf.occupySpotOnFloor(vehicle)) {
-                System.out.println(vehicle + " parked!");
+                System.out.println(String.valueOf(vehicle.getType()) + " parked!");
                 return true;
             }
         }
         return false;
+
     }
 
     public boolean unparkVehicle(Vehicle vehicle) {
@@ -55,7 +56,7 @@ public class ParkingLot {
     public void summary() {
         for (ParkingFloor floor:
                 floors) {
-            System.out.println("Floor " + floor.getIdParkingFloor() + "has free spots:" + floor.getFreeSpotsSummary() + "\n");
+            System.out.println("Floor " + floor.getIdParkingFloor() + " free spots: " + floor.getFreeSpotsSummary() + "\n");
         }
     }
 }
