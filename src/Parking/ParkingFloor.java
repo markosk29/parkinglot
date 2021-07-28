@@ -88,7 +88,7 @@ public class ParkingFloor {
             }
             //            Lambda Expressions variant:
 //            int count = (int) entry.getValue().stream().filter(spot -> !spot.isOcuppied()).count();
-            stringBuilder.append(entry.getKey() + ": " + count + "free spots");
+            stringBuilder.append(entry.getKey() + ":" + count + " free spots, ");
         }
         return stringBuilder.toString();
     }
