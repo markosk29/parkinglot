@@ -30,4 +30,8 @@ public abstract class ParkingSpot {
 
     public abstract String getInfo();
 
+    public boolean isOcuppied() {
+        return this.isOcuppied;
+    }
+
 }

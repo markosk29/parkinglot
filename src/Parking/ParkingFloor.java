@@ -57,4 +57,20 @@ public class ParkingFloor {
         System.out.println("No spots available on floor: " + this.idParkingFloor);
         return false;
     }
+
+    public String getFreeSpotsSummary() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int count = 0;
+        for (var entry : totalSpots.entrySet()) {
+            for (var spot: entry.getValue()) {
+                if (!spot.isOcuppied()) {
+                    count++;
+                }
+            }
+            //            Lambda Expressions variant:
+//            int count = (int) entry.getValue().stream().filter(spot -> !spot.isOcuppied()).count();
+            stringBuilder.append(entry.getKey() + ": " + count + "free spots");
+        }
+        return stringBuilder.toString();
+    }
 }
