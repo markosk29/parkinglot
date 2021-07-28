@@ -51,6 +51,11 @@ public class Main {
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
+
+        parkingLot.unparkVehicle(car);
+        parkingLot.unparkVehicle(car);
+
+        parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
         parkingLot.parkVehicle(car);
 
