@@ -2,10 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParkingLotPj/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingFloor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingLot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/BikeSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/CarSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/ElectricSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/HandicapSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/Motorbike.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/SpotType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Vehicles/Bike.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Vehicles/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Vehicles/Motorbike.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Vehicles/Vehicle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Vehicles/VehicleType.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parking/ParkingFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parking/ParkingLot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingLot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/BikeSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/BikeSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/CarSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/CarSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/ElectricSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ElectricSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/HandicapSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/HandicapSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/Motorbike.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/SpotType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/SpotType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicles/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicles/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicles/Motorbike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Motorbike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicles/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vehicles/VehicleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/VehicleType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
