@@ -1,9 +1,12 @@
 package com.avangarde.parkinglot.utils;
 
+import com.avangarde.parkinglot.parking.services.ParkingFloor;
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 //////////////////////////
 //NOT FINAL
@@ -14,7 +17,7 @@ public class Import {
 
     private StringBuilder stringBuilder;
 
-    public String getFromFile(String path) {
+    public void getObjectsFromFile(String path) {
         stringBuilder = new StringBuilder();
 
         try {
@@ -29,12 +32,12 @@ public class Import {
             e.printStackTrace();
         }
 
-        this.processString(stringBuilder.toString());
+        this.getObjectsFromString(stringBuilder.toString());
 
-        return stringBuilder.toString();
+        //return stringBuilder.toString();
     }
 
-    public void processString(String inputString) {
+    public void getObjectsFromString(String inputString) {
         String[] inputArray = inputString.split("\n");
         boolean isFloors = false;
         boolean isVehicles = false;
@@ -61,6 +64,21 @@ public class Import {
                 vehicleStrings.add(element);
             }
         }
+
+        this.getFloorObjectsFromString(floorStrings);
+    }
+
+    public void getFloorObjectsFromString(ArrayList<String> floorStrings) {
+        for(String floorString : floorStrings) {
+            String[] floorElements = floorString.split(" ");
+
+            for(String element : floorElements) {
+                if(!element.trim().isEmpty()) {
+                    System.out.println(element);
+                }
+            }
+        }
+
     }
 
     public boolean isNumeric(String string) {

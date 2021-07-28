@@ -8,9 +8,7 @@ public class Main {
 
         String path = "C:\\Users\\Kosa Markos\\IdeaProjects\\parkinglot\\src\\input.txt";
 
-        importFromFile.getFromFile(path);
-        for(String string : importFromFile.aaa) {
-           System.out.println(string);
-        }
+        importFromFile.getObjectsFromFile(path);
+
     }
 }
