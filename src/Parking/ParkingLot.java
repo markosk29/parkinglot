@@ -37,9 +37,20 @@ public class ParkingLot {
             }
         }
         return false;
+    }
 
+    public boolean unparkVehicle(Vehicle vehicle) {
+        for (ParkingFloor pf : floors
+        ) {
+            if (pf.leaveSpotOnFloor(vehicle)) {
+                System.out.println("New free spot");
+                return true;
+            }
+        }
+        return false;
 
     }
+
 
     public void summary() {
         for (ParkingFloor floor:

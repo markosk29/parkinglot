@@ -58,6 +58,25 @@ public class ParkingFloor {
         return false;
     }
 
+    public boolean leaveSpotOnFloor(Vehicle vehicle) {
+        String spotType = String.valueOf(vehicle.getType());
+        if (this.totalSpots.containsKey(SpotType.valueOf(spotType))) {
+            for (ParkingSpot ps: totalSpots.get(SpotType.valueOf(spotType))
+            ) {
+                if (!ps.spotAvailable()) {
+                    System.out.println("Freeing spot.....");
+                    ps.leaveSpot();
+                    return true;
+                }
+            }
+        }
+        System.out.println("New free spot on floor: " + this.idParkingFloor);
+        return false;
+    }
+
+
+
+
     public String getFreeSpotsSummary() {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
