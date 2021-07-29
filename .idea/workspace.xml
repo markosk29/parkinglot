@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParkingLotPj/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/utils/Import.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/utils/Import.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parking/ParkingFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parking/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parking/ParkingLot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
