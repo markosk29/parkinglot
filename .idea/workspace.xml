@@ -2,15 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/BikeSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/BikeSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/CarSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/CarSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ElectricSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ElectricSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/HandicapSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/HandicapSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingFloor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingLot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/BikeSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/CarSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/ElectricSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/HandicapSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/BikeSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/CarSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/ElectricSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/HandicapSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/MotorbikeSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/ParkingSpot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/SpotType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/services/ParkingFloor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/services/ParkingLot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/utils/Import.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Bike.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Motorbike.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Vehicle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/VehicleType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/input.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +42,19 @@
       </list>
     </option>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/main" />
+    <option name="OPTIONS">
+      <set>
+        <option value="INTERACTIVE" />
+      </set>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="onto" value="062ba764c080f4afe3c4f7ac47fed7360c2fa301" />
   </component>
   <component name="ProjectId" id="1vuY4tB3LFhGkIlyhsY90A3SkeA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
