@@ -13,6 +13,10 @@ public class ParkingFloor {
     private int idParkingFloor;
     private Map<SpotType, List<ParkingSpot>> totalSpots;
 
+    public ParkingFloor() {
+
+    }
+
     public ParkingFloor(int idParkingFloor, Map<SpotType, List<ParkingSpot>> totalSpots) {
         this.idParkingFloor = idParkingFloor;
         this.totalSpots = totalSpots;
@@ -92,5 +96,13 @@ public class ParkingFloor {
             stringBuilder.append(entry.getKey() + ":" + count + " free spots, ");
         }
         return stringBuilder.toString();
+    }
+
+    public Map<SpotType, List<ParkingSpot>> getTotalSpots() {
+        return totalSpots;
+    }
+
+    public void setTotalSpots(Map<SpotType, List<ParkingSpot>> totalSpots) {
+        this.totalSpots = totalSpots;
     }
 }

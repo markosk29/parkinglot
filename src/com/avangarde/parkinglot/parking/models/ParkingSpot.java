@@ -8,9 +8,8 @@ public abstract class ParkingSpot {
     private Vehicle vehicle;
     private SpotType type;
 
-    public ParkingSpot(boolean isOcuppied, Vehicle vehicle, SpotType type) {
+    public ParkingSpot(boolean isOcuppied, SpotType type) {
         this.isOcuppied = isOcuppied;
-        this.vehicle = vehicle;
         this.type = type;
     }
 
@@ -33,4 +32,23 @@ public abstract class ParkingSpot {
         return this.isOcuppied;
     }
 
+    public void setOcuppied(boolean ocuppied) {
+        isOcuppied = ocuppied;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public SpotType getType() {
+        return type;
+    }
+
+    public void setType(SpotType type) {
+        this.type = type;
+    }
 }
