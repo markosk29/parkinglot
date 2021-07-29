@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="cleanup, removed classes, added .gitignore">
+      <change afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/services/VehiclesAsStringImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/BikeSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/CarSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/ElectricSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/HandicapSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Importer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/interfaces/IVehicleAsString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/interfaces/IVehicleAsString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Motorbike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/vehicle/models/Motorbike.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="markos-importupdate" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitRewordedCommitMessages">
@@ -64,7 +67,7 @@
       <recent name="com.ciolea" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.VehiclesAsStringImpl">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -72,6 +75,21 @@
       <module name="ParkingLotPj" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VehiclesAsStringImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.avangarde.parkinglot.vehicle.services.VehiclesAsStringImpl" />
+      <module name="ParkingLotPj" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.avangarde.parkinglot.vehicle.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,6 +104,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.VehiclesAsStringImpl" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

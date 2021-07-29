@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IVehicleAsString {
 
-    void write(List<Vehicle> vehicles);
+    String write(List<Vehicle> vehicles);
 }

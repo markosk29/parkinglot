@@ -1,10 +1,10 @@
-import com.avangarde.parkinglot.utils.Import;
+import com.avangarde.parkinglot.utils.Importer;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Import importFromFile = new Import();
+        Importer importFromFile = new Importer();
 
         String path = "C:\\Users\\Kosa Markos\\IdeaProjects\\parkinglot\\src\\input.txt";
 

@@ -9,4 +9,10 @@ public class Bike extends Vehicle {
     public String getInfo() {
         return "This is a bike.";
     }
+
+
+    @Override
+    public String toString() {
+        return "BIKE";
+    }
 }

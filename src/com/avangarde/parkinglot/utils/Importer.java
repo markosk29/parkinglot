@@ -13,7 +13,8 @@ import java.util.*;
 //////////////////////////
 //NOT FINAL
 //////////////////////////
-public class Import {
+//importer
+public class Importer {
     private BufferedInputStream input;
     private FileInputStream fileInputStream;
 

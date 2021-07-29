@@ -19,4 +19,9 @@ public class Motorbike extends Vehicle {
     public void setPlate(String plate) {
         this.plate = plate;
     }
+
+    @Override
+    public String toString() {
+        return "MOTORBIKE " + this.plate;
+    }
 }

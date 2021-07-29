@@ -14,10 +14,18 @@ public class Car extends Vehicle {
     }
 
     public String getPlate() {
-        return plate;
+        return this.plate;
     }
 
     public void setPlate(String plate) {
         this.plate = plate;
     }
+
+    @Override
+    public String toString() {
+        return "CAR " + this.plate;
+    }
+
+
+
 }
