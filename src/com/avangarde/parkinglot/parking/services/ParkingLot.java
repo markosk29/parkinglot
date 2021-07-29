@@ -8,12 +8,19 @@ import java.util.List;
 public class ParkingLot {
     List<ParkingFloor> floors = new ArrayList<>();
 
+    public ParkingLot() {
+    }
+
+    public ParkingLot(int noOfFloors) {
+        createFloors(noOfFloors);
+    }
+
     private void createFloors(int noOfFloors) {
         int minFloors = 3;
         for(int i = 0; i < minFloors; i++) {
             ParkingFloor floor = new ParkingFloor(i);
-            floor.setIdParkingFloor(i);
-
+//            redundant, constructorul face deja set pe id cu param i:
+//            floor.setIdParkingFloor(i);
             this.addFloor(floor);
         }
     }
@@ -28,7 +35,7 @@ public class ParkingLot {
 
 
     public boolean parkVehicle(Vehicle vehicle) {
-        for (ParkingFloor pf : floors
+        for (var pf : floors
         ) {
             if (pf.occupySpotOnFloor(vehicle)) {
                 System.out.println(String.valueOf(vehicle.getType()) + " parked!");
@@ -52,10 +59,14 @@ public class ParkingLot {
     }
 
 
+    public List<ParkingFloor> getFloors() {
+        return floors;
+    }
+
     public void summary() {
-        for (ParkingFloor floor:
-                floors) {
-            System.out.println("Floor " + floor.getIdParkingFloor() + " free spots: " + floor.getFreeSpotsSummary() + "\n");
-        }
+//        for (ParkingFloor floor:
+//                floors) {
+//            System.out.println("Floor " + floor.getIdParkingFloor() + "has free spots:" + floor.getFreeSpotsSummary() + "\n");
+//        }
     }
 }

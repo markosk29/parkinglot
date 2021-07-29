@@ -5,7 +5,8 @@ import com.avangarde.parkinglot.vehicle.models.Vehicle;
 public abstract class ParkingSpot {
 
     private boolean isOcuppied;
-    private Vehicle vehicle;
+//    removed field from UML Diagram
+//    private Vehicle vehicle;
     private SpotType type;
 
     public ParkingSpot(boolean isOcuppied, SpotType type) {
@@ -34,14 +35,6 @@ public abstract class ParkingSpot {
 
     public void setOcuppied(boolean ocuppied) {
         isOcuppied = ocuppied;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
     }
 
     public SpotType getType() {

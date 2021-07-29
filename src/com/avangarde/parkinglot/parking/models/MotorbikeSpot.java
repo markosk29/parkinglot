@@ -8,6 +8,6 @@ public class MotorbikeSpot extends ParkingSpot {
 
     @Override
     public String getInfo() {
-        return "This com.avangarde.parkinglot.parking spot is for motorbikes.";
+        return "This parking spot is for motorbikes.";
     }
 }
