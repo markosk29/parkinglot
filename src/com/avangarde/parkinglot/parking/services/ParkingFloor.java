@@ -31,6 +31,7 @@ public class ParkingFloor {
     }
 
     public void addParkingSpots(SpotType type, ParkingSpot[] spots) {
+
         if (!this.totalSpots.containsKey(type)) {
             ArrayList<ParkingSpot> parkingSpots = (ArrayList<ParkingSpot>) Arrays.asList(spots);
             totalSpots.put(type, parkingSpots);
