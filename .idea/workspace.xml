@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="cleanup, removed classes, added .gitignore">
+      <change afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/BikeSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/CarSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/ElectricSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spot/HandicapSpot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +33,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitRewordedCommitMessages">
@@ -86,6 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

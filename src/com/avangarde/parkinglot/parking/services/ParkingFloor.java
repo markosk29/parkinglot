@@ -1,6 +1,7 @@
 package com.avangarde.parkinglot.parking.services;
 
 import com.avangarde.parkinglot.parking.models.ParkingSpot;
+import com.avangarde.parkinglot.parking.models.ParkingSpotLotSize;
 import com.avangarde.parkinglot.parking.models.SpotType;
 import com.avangarde.parkinglot.vehicle.models.Vehicle;
 
@@ -8,45 +9,67 @@ import java.util.List;
 import java.util.Map;
 
 public class ParkingFloor {
-    private int idParkingFloor;
-    private Map<SpotType, List<ParkingSpot>> totalSpots;
+    private int floorID;
+    private Map<SpotType, List<ParkingSpot>> spotPairs;
 
-    public ParkingFloor() {
-
+//    public ParkingFloor() {
+//
+//    }
+//
+    private ParkingFloor(int idParkingFloor, Map<SpotType, List<ParkingSpot>> totalSpots) {
+        this.floorID = idParkingFloor;
+        this.spotPairs = totalSpots;
     }
 
-    public ParkingFloor(int idParkingFloor, Map<SpotType, List<ParkingSpot>> totalSpots) {
-        this.idParkingFloor = idParkingFloor;
-        this.totalSpots = totalSpots;
-    }
+    public static class ParkingFloorBuilder {
+        private int floorID;
+        private Map<SpotType, List<ParkingSpot>> spotPairs;
 
-    public ParkingFloor(int idParkingFloor) {
-        this.idParkingFloor = idParkingFloor;
-    }
+        public static ParkingFloorBuilder builder() {
+            return new ParkingFloorBuilder();
+        }
 
-    public void setIdParkingFloor(int idParkingFloor) {
-        this.idParkingFloor = idParkingFloor;
-    }
+        public ParkingFloorBuilder floorID (int floorID) {
+            this.floorID = floorID;
+            return this;
+        }
 
-    public int getIdParkingFloor() {
-        return idParkingFloor;
-    }
+        public ParkingFloorBuilder spotPairs (Map<SpotType, List<ParkingSpot>> spotPairs) {
+            this.spotPairs = spotPairs;
+            return this;
+        }
 
-    public void addParkingSpots(SpotType type, List<ParkingSpot> spots) {
-        if (!this.totalSpots.containsKey(type)) {
-            totalSpots.put(type, spots);
-            System.out.println("Added " + spots.size() + " parking spots, type: " + type);
-        } else {
-            totalSpots.get(type).addAll(spots);
-            System.out.println("Spots of type " + type + " exists, added new parking spots. New total: " + totalSpots.size());
+        public ParkingFloor build() {
+            return new ParkingFloor(floorID, spotPairs);
         }
     }
 
+    public ParkingFloor(int floorID) {
+        this.floorID = floorID;
+    }
+
+    public void setFloorID(int floorID) {
+        this.floorID = floorID;
+    }
+
+    public int getFloorID() {
+        return floorID;
+    }
+
+    public void addParkingSpots(SpotType type, List<ParkingSpot> spots) {
+        if (!this.spotPairs.containsKey(type)) {
+            spotPairs.put(type, spots);
+            System.out.println("Added " + spots.size() + " parking spots, type: " + type);
+        } else {
+            spotPairs.get(type).addAll(spots);
+            System.out.println("Spots of type " + type + " exists, added new parking spots. New total: " + spotPairs.size());
+        }
+    }
 
     public boolean occupySpotOnFloor(Vehicle vehicle) {
         String spotType = String.valueOf(vehicle.getType());
-        if (this.totalSpots.containsKey(SpotType.valueOf(spotType))) {
-            for (ParkingSpot ps : totalSpots.get(SpotType.valueOf(spotType))
+        if (this.spotPairs.containsKey(SpotType.valueOf(spotType))) {
+            for (ParkingSpot ps : spotPairs.get(SpotType.valueOf(spotType))
             ) {
                 if (ps.spotAvailable()) {
                     System.out.println("Occupying spot.....");
@@ -55,14 +78,14 @@ public class ParkingFloor {
                 }
             }
         }
-        System.out.println("No spots available on floor: " + this.idParkingFloor);
+        System.out.println("No spots available on floor: " + this.floorID);
         return false;
     }
 
     public boolean leaveSpotOnFloor(Vehicle vehicle) {
         String spotType = String.valueOf(vehicle.getType());
-        if (this.totalSpots.containsKey(SpotType.valueOf(spotType))) {
-            for (ParkingSpot ps : totalSpots.get(SpotType.valueOf(spotType))
+        if (this.spotPairs.containsKey(SpotType.valueOf(spotType))) {
+            for (ParkingSpot ps : spotPairs.get(SpotType.valueOf(spotType))
             ) {
                 if (!ps.spotAvailable()) {
                     System.out.println("Freeing spot.....");
@@ -71,7 +94,7 @@ public class ParkingFloor {
                 }
             }
         }
-        System.out.println("New free spot on floor: " + this.idParkingFloor);
+        System.out.println("New free spot on floor: " + this.floorID);
         return false;
     }
 
@@ -79,7 +102,7 @@ public class ParkingFloor {
     public String getFreeSpotsSummary() {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
-        for (var entry : totalSpots.entrySet()) {
+        for (var entry : spotPairs.entrySet()) {
             for (var spot : entry.getValue()) {
                 if (!spot.isOcuppied()) {
                     count++;
@@ -92,11 +115,11 @@ public class ParkingFloor {
         return stringBuilder.toString();
     }
 
-    public Map<SpotType, List<ParkingSpot>> getTotalSpots() {
-        return totalSpots;
+    public Map<SpotType, List<ParkingSpot>> getSpotPairs() {
+        return spotPairs;
     }
 
-    public void setTotalSpots(Map<SpotType, List<ParkingSpot>> totalSpots) {
-        this.totalSpots = totalSpots;
+    public void setSpotPairs(Map<SpotType, List<ParkingSpot>> spotPairs) {
+        this.spotPairs = spotPairs;
     }
 }
