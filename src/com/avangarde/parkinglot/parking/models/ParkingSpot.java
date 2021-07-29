@@ -5,7 +5,8 @@ import com.avangarde.parkinglot.vehicle.models.Vehicle;
 public abstract class ParkingSpot {
 
     private boolean isOcuppied;
-    private Vehicle vehicle;
+//    removed field from UML Diagram
+//    private Vehicle vehicle;
     private SpotType type;
 
     public ParkingSpot(boolean isOcuppied, SpotType type) {

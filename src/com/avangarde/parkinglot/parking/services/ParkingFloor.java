@@ -38,10 +38,10 @@ public class ParkingFloor {
         if (!this.totalSpots.containsKey(type)) {
             ArrayList<ParkingSpot> parkingSpots = (ArrayList<ParkingSpot>) Arrays.asList(spots);
             totalSpots.put(type, parkingSpots);
-            System.out.println("Added " +spots.length+ " com.avangarde.parkinglot.parking spots, type: " + type);
+            System.out.println("Added " +spots.length+ " parking spots, type: " + type);
         } else {
             totalSpots.get(type).addAll(Arrays.asList(spots));
-            System.out.println("Spots of type " + type + " exists, added new com.avangarde.parkinglot.parking spots. New total: " + totalSpots.size());
+            System.out.println("Spots of type " + type + " exists, added new parking spots. New total: " + totalSpots.size());
         }
     }
 
@@ -93,7 +93,7 @@ public class ParkingFloor {
             }
             //            Lambda Expressions variant:
 //            int count = (int) entry.getValue().stream().filter(spot -> !spot.isOcuppied()).count();
-            stringBuilder.append(entry.getKey() + ":" + count + " free spots, ");
+            stringBuilder.append(entry.getKey() + ": " + count + "free spots");
         }
         return stringBuilder.toString();
     }

@@ -3,10 +3,10 @@ package Spot;
 import Vehicles.Vehicle;
 import Parking.ParkingSpot;
 
-public class MotorbikeSpot extends ParkingSpot {
+public class ElectricSpot extends ParkingSpot {
 
-    public MotorbikeSpot() {
-        super(false, SpotType.MOTORBIKE);
+    public ElectricSpot() {
+        super(false, SpotType.ELECTRIC);
     }
 
     @Override
