@@ -4,8 +4,8 @@ import com.avangarde.parkinglot.vehicle.models.Vehicle;
 
 public class HandicapSpot extends ParkingSpot {
 
-    public HandicapSpot(Vehicle vehicle) {
-        super(false, vehicle, SpotType.HANDICAP);
+    public HandicapSpot() {
+        super(false, SpotType.HANDICAP);
     }
 
     @Override

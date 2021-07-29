@@ -1,11 +1,9 @@
 package com.avangarde.parkinglot.parking.models;
 
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
-
 public class BikeSpot extends ParkingSpot {
 
-    public BikeSpot(Vehicle vehicle) {
-        super(false, vehicle, SpotType.BIKE);
+    public BikeSpot() {
+        super(false, SpotType.BIKE);
     }
 
     @Override

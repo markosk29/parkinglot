@@ -1,12 +1,14 @@
 package com.avangarde.parkinglot.utils;
 
+import com.avangarde.parkinglot.parking.interfaces.IFloorBuilder;
+import com.avangarde.parkinglot.parking.models.*;
 import com.avangarde.parkinglot.parking.services.ParkingFloor;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
 //////////////////////////
 //NOT FINAL
@@ -16,6 +18,11 @@ public class Import {
     private FileInputStream fileInputStream;
 
     private StringBuilder stringBuilder;
+
+    private IFloorBuilder floorBuilder;
+
+    //createPFloor(int floorNo, List<>)
+    //
 
     public void getObjectsFromFile(String path) {
         stringBuilder = new StringBuilder();
@@ -68,17 +75,140 @@ public class Import {
         this.getFloorObjectsFromString(floorStrings);
     }
 
-    public void getFloorObjectsFromString(ArrayList<String> floorStrings) {
+    public ArrayList<ParkingFloor> getFloorObjectsFromString(ArrayList<String> floorStrings) {
+        ArrayList<ParkingFloor> parkingFloors = new ArrayList<>();
+        Map<SpotType, List<ParkingSpot>> totalSpots;
+
         for(String floorString : floorStrings) {
             String[] floorElements = floorString.split(" ");
+            int floorId = Integer.parseInt(floorElements[0].trim());
 
-            for(String element : floorElements) {
-                if(!element.trim().isEmpty()) {
-                    System.out.println(element);
+            ArrayList<ParkingSpotLotSize> parkingSpotLotSizes = new ArrayList<>();
+
+            for(int i = 1; i < floorElements.length - 1; i += 2) {
+                String typeElement = floorElements[i].toUpperCase();
+                String sizeElement = floorElements[i + 1];
+
+                ParkingSpotLotSize parkingSpotLotSize = createParkingSpotLotSize(typeElement, sizeElement);
+
+                if(parkingSpotLotSize != null) {
+                    parkingSpotLotSizes.add(parkingSpotLotSize);
                 }
             }
+
+            ParkingFloor newFloor = floorBuilder.createParkingFloor(floorId, parkingSpotLotSizes);
+
+            totalSpots = this.createSpots(floorElements);
+
+            newFloor.setTotalSpots(totalSpots);
+
+            totalSpots.clear();
+
+            parkingFloors.add(newFloor);
         }
 
+        return parkingFloors;
+    }
+
+    private ParkingSpotLotSize createParkingSpotLotSize(String typeElement, String sizeElement) {
+        try {
+            return ParkingSpotLotSize.ParkingSpotLotSizeBuilder.builder()
+                    .type(SpotType.valueOf(typeElement))
+                    .size(Integer.parseInt(sizeElement))
+                    .build();
+
+        } catch(NumberFormatException e) {
+            System.out.println("Invalid input element. Expected number, received " + sizeElement);
+        } catch(IllegalArgumentException e) {
+            System.out.println("Invalid input element. Expected SpotType, received " + typeElement);
+        } catch(Exception e) {
+            System.out.println("Could not create parking spot lot. Received input " + sizeElement + " , " + typeElement);
+        }
+
+        return null;
+    }
+
+
+    private Map<SpotType, List<ParkingSpot>> createSpots(String[] floorElements) {
+        Map<SpotType, List<ParkingSpot>> totalSpots = new HashMap<>();
+        List<ParkingSpot> parkingSpots = new ArrayList<>();
+
+        SpotType foundType = SpotType.CAR;
+        boolean typeExists = false;
+
+        for(int i = 1; i < floorElements.length; i++) {
+            String carType = floorElements[i - 1].trim().toUpperCase();
+
+            if(!floorElements[i].trim().isEmpty()) {
+                switch(carType) {
+                            case "CAR": {
+                                foundType = SpotType.CAR;
+                                typeExists = true;
+
+                                for(int j = 0; j < Integer.parseInt(floorElements[i].trim()); j++) {
+                                    parkingSpots.add(new CarSpot());
+                                }
+
+                                break;
+                            }
+
+                            case "MOTORBIKE": {
+                                foundType = SpotType.MOTORBIKE;
+                                typeExists = true;
+
+                                for(int j = 0; j < Integer.parseInt(floorElements[i].trim()); j++) {
+                                    parkingSpots.add(new MotorbikeSpot());
+                                }
+
+                                break;
+                            }
+
+                            case "BIKE": {
+                                foundType = SpotType.BIKE;
+                                typeExists = true;
+
+                                for(int j = 0; j < Integer.parseInt(floorElements[i].trim()); j++) {
+                                    parkingSpots.add(new BikeSpot());
+                                }
+
+                                break;
+                            }
+
+                            case "ELECTRIC": {
+                                foundType = SpotType.ELECTRIC;
+                                typeExists = true;
+
+                                for (int j = 0; j < Integer.parseInt(floorElements[i].trim()); j++) {
+                            parkingSpots.add(new ElectricSpot());
+                                }
+
+                                break;
+                            }
+
+                    case "HANDICAP": {
+                        foundType = SpotType.HANDICAP;
+                        typeExists = true;
+
+                        for (int j = 0; j < Integer.parseInt(floorElements[i].trim()); j++) {
+                            parkingSpots.add(new HandicapSpot());
+                        }
+                        break;
+                    }
+                }
+            }
+
+            if(parkingSpots.size() == 0 && typeExists) {
+                totalSpots.put(foundType, new ArrayList<>());
+
+            } else if(typeExists ) {
+                totalSpots.put(foundType, parkingSpots);
+            }
+
+            parkingSpots.clear();
+            typeExists = false;
+        }
+
+        return totalSpots;
     }
 
     public boolean isNumeric(String string) {
