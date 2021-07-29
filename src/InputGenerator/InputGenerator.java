@@ -71,8 +71,7 @@ public class InputGenerator {
 
     public static void main (String[] args) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         InputGenerator.createParkingLot().summary();
-    }
-
+    }//new
     public  String createRandomPlate() {
         String generatedString2 = generate(2, 48, 57);
         String generatedString = generate(2, 65, 90);
