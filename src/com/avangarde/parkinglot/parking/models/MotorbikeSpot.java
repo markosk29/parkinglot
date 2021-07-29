@@ -1,7 +1,4 @@
-package Spot;
-
-import Vehicles.Vehicle;
-import Parking.ParkingSpot;
+package com.avangarde.parkinglot.parking.models;
 
 public class MotorbikeSpot extends ParkingSpot {
 

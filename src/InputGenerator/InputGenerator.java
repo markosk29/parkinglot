@@ -1,8 +1,7 @@
 package InputGenerator;
 
-import Parking.ParkingLot;
-import Parking.ParkingSpot;
-import Spot.*;
+import com.avangarde.parkinglot.parking.models.*;
+import com.avangarde.parkinglot.parking.services.ParkingLot;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;

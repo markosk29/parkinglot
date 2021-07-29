@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingFloor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingLot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Parking/ParkingSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/BikeSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/CarSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/ElectricSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/Spot/HandicapSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/BikeSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/CarSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/ElectricSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/HandicapSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/MotorbikeSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/ParkingSpot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/models/SpotType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/services/ParkingFloor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/parking/services/ParkingLot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/utils/Import.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Bike.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Car.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Motorbike.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/Vehicle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/com/avangarde/parkinglot/vehicle/models/VehicleType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLotPj/input.txt" beforeDir="false" />
+    <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="cleanup, removed classes, added .gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/BikeSpot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/CarSpot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/ElectricSpot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spot/HandicapSpot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/MotorbikeSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +103,21 @@
       <updated>1627413252213</updated>
       <workItem from="1627413255037" duration="2330000" />
     </task>
+    <task id="LOCAL-00001" summary="cleanup, removed classes, added .gitignore">
+      <created>1627559966128</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627559966128</updated>
+    </task>
+    <task id="LOCAL-00002" summary="cleanup, removed classes, added .gitignore">
+      <created>1627560022494</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627560022494</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +134,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cleanup, removed classes, added .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup, removed classes, added .gitignore" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ParkingLotProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1627464630451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

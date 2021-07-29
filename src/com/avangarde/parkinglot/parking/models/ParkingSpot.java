@@ -37,14 +37,6 @@ public abstract class ParkingSpot {
         isOcuppied = ocuppied;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
     public SpotType getType() {
         return type;
     }

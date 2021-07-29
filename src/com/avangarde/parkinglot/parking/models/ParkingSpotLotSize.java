@@ -18,7 +18,7 @@ public class ParkingSpotLotSize {
         private int size;
 
         public static ParkingSpotLotSizeBuilder builder() {
-            return this;
+            return new ParkingSpotLotSizeBuilder();
         }
 
         public ParkingSpotLotSizeBuilder type(SpotType type) {
