@@ -7,9 +7,13 @@ public class Motorbike extends Vehicle {
         super(VehicleType.MOTORBIKE);
     }
 
+    public Motorbike(String plate) {
+        super(VehicleType.MOTORBIKE);
+        this.plate = plate;
+    }
     @Override
     public String getInfo() {
-        return "This is a motorbike";
+        return "Motorbike [" +this.plate+"]";
     }
 
     public String getPlate() {
@@ -20,8 +24,12 @@ public class Motorbike extends Vehicle {
         this.plate = plate;
     }
 
+
     @Override
     public String toString() {
         return "MOTORBIKE " + this.plate;
     }
+
+
+
 }

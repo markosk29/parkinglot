@@ -23,15 +23,11 @@ public class VehicleBuilder implements IVehicleBuilder {
 
     @Override
     public Vehicle createVehicle(VehicleType type, String plate) {
-        switch(type) {
-            case CAR:
-                return new Car();
-            case BIKE:
-                return new Bike();
-            case MOTORBIKE:
-                return new Motorbike();
-        }
+        return new VehicleFactory().createVehicle(type, plate);
+    }
 
-        return null;
+    @Override
+    public Vehicle createVehicle(String type, String plate) {
+        return new VehicleFactory().createVehicle(type, plate);
     }
 }
