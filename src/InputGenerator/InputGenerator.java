@@ -17,42 +17,36 @@ public class InputGenerator implements IFloorBuilder {
      * Returns a randomly configured parking lot with all spots free
      * @return parking lot
      */
-//    public ParkingLot createParkingLot() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
-//        var noOfFloors = rand(MIN_FLOORS, MAX_FLOORS); // inclusive
-//        var parkingLot = new ParkingLot();
-//        for (int floorCount = 0; floorCount < noOfFloors; floorCount++) {
-//            parkingLot.addFloor(createParkingFloor(floorCount, ))
-//        }
-//    }
-
-        //        var noOfFloors = rand(MIN_FLOORS, MAX_FLOORS); // inclusive
-//        ParkingLot lot = new ParkingLot(noOfFloors);
-//        for (int floorCount = 0; floorCount < noOfFloors; floorCount++) { // create each floor
-//            for (var type : SpotType.values()) { // create spot types and associated floors
-//                ArrayList<ParkingSpot> spots = getRndSizedParkingSpots(type);
-//                if (spots == null) continue; // skip creating spots of that particular type
-//                // add spots to parking floor
-//                lot.getFloors().get(floorCount).addParkingSpots(type, spots);
-//            }
-//        }
-//        return lot;
+    public ParkingLot createParkingLot() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        var noOfFloors = rand(MIN_FLOORS, MAX_FLOORS); // inclusive
+        var parkingLot = new ParkingLot();
+        for (int floorCount = 0; floorCount < noOfFloors; floorCount++) {
+            parkingLot.addFloor(createParkingFloor(floorCount, generateRandomSpotLots()));
+        }
+        return parkingLot;
+    }
 
     // HELPER METHODS
 
-//    private static ArrayList<ParkingSpot> getRndSizedParkingSpots(SpotType type) {
-//        if ( rand(0, 1) == 0) {
-//            return null;
-//        }
-//        var maxSpots = rand(0, 100);
-//        var spots = new ArrayList<ParkingSpot>();
-//        for (int spotCount = 0; spotCount < maxSpots; spotCount++) {
-//            // create spots
-//            spots.add(createParkingSpot(type));
-//        }
-//        return spots;
-//    }
+    private static boolean acceptOrDecline() {
+        if ( rand(0, 1) == 0) {
+            return false;
+        }
+        return true;
 
-
+    }
+    private List<ParkingSpotLotSize> generateRandomSpotLots() {
+        List<ParkingSpotLotSize> spotsLots = new ArrayList<>();
+        for (var type : SpotType.values()) { // create spot types
+            if (!acceptOrDecline()) continue; // skip creating spots of that particular type
+            else {
+                var randomMaxSpots = rand(0, 150);
+                var lot = ParkingSpotLotSize.ParkingSpotLotSizeBuilder.builder().type(type).size(randomMaxSpots).build();
+                spotsLots.add(lot);
+            }
+        }
+        return spotsLots;
+    }
 
     private static int rand (int min, int max) {
        return (int) (Math.floor((Math.random() * (max-min+1) + min)));
