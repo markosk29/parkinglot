@@ -7,6 +7,14 @@ public class Bike extends Vehicle {
 
     @Override
     public String getInfo() {
-        return "This is a bike.";
+        return "Bike [NO PLATE].";
     }
+
+
+    @Override
+    public String toString() {
+        return "BIKE";
+    }
+
+
 }

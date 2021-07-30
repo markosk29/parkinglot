@@ -5,5 +5,6 @@ import com.avangarde.parkinglot.vehicle.models.VehicleType;
 
 public interface IVehicleBuilder {
 
-    Vehicle createVehile(VehicleType type, String plate);
+    Vehicle createVehicle(VehicleType type, String plate);
+    Vehicle createVehicle(String type, String plate);
 }

@@ -8,16 +8,27 @@ public class Car extends Vehicle {
         super(VehicleType.CAR);
     }
 
+    public Car(String plate) {
+        super(VehicleType.CAR);
+        this.plate = plate;
+    }
+
     @Override
     public String getInfo() {
-        return "This is a car.";
+        return "Car [" +this.plate+"]";
     }
 
     public String getPlate() {
-        return plate;
+        return this.plate;
     }
 
     public void setPlate(String plate) {
         this.plate = plate;
     }
+
+    @Override
+    public String toString() {
+        return "CAR " + this.plate;
+    }
+
 }
