@@ -7,6 +7,7 @@ public abstract class Vehicle {
         this.type = type;
     }
 
+
     public VehicleType getType() {
         return type;
     }
@@ -15,8 +16,6 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "type=" + type +
-                '}';
+        return "" + this.type;
     }
 }

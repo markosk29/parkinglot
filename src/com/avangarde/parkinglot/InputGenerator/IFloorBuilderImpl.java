@@ -13,12 +13,7 @@ import java.util.*;
 public class IFloorBuilderImpl implements IFloorBuilder {
     private static final int MIN_FLOORS = 2;
     private static final int MAX_FLOORS = 10;
-    public static final int TWO_CHARACTERS = 2;
-    public static final int THREE_CHARACTERS = 3;
-    public static final int ASCII_FOR_LETTER_A= 65;
-    public static final int ASCII_FOR_LETTER_Z= 90;
-    public static final int ASCII_FOR_NUMBER_0= 48;
-    public static final int ASCII_FOR_NUMBER_9= 57;
+
     public static final int MIN_NUMBER_OF_SPOTS = 0;
     public static final int MAX_NUMBER_OF_SPOTS = 150;
 
@@ -81,24 +76,7 @@ public class IFloorBuilderImpl implements IFloorBuilder {
     }
 
 
-    public  String createRandomPlate() {
-        String generatedPlateCounty= getRandomContentForPlate(TWO_CHARACTERS, ASCII_FOR_LETTER_A, ASCII_FOR_LETTER_Z);
-        String generatedPlateNumber = getRandomContentForPlate(TWO_CHARACTERS, ASCII_FOR_NUMBER_0, ASCII_FOR_NUMBER_9);
-        String generatedPlateName = getRandomContentForPlate(THREE_CHARACTERS, ASCII_FOR_LETTER_A, ASCII_FOR_LETTER_Z);
 
-        return generatedPlateCounty + generatedPlateNumber + generatedPlateName;
-    }
-
-    private  String getRandomContentForPlate(int totalNumberOfCharacters, int startCharacter, int endCharacter) {
-        Random random = new Random();
-        StringBuilder buffer = new StringBuilder(totalNumberOfCharacters);
-        for (int i = 0; i < totalNumberOfCharacters; i++) {
-            int randomLimitedInt = startCharacter + (int)
-                    (random.nextFloat() * (endCharacter - startCharacter + 1));
-            buffer.append((char) randomLimitedInt);
-        }
-        return buffer.toString();
-    }
 
 
     // HELPER METHODS

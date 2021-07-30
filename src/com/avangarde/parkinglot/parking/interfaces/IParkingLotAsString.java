@@ -5,6 +5,6 @@ import com.avangarde.parkinglot.parking.services.ParkingLot;
 
 public interface IParkingLotAsString {
 
-    void write(ParkingLot parkingLot);
-    void write(ParkingFloor parkingFloor);
+    String write(ParkingLot parkingLot);
+    String write(ParkingFloor parkingFloor);
 }

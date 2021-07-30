@@ -4,7 +4,7 @@ import com.avangarde.parkinglot.vehicle.models.*;
 
 public class VehicleFactory {
 
-    public Vehicle createVehicle(VehicleType type, String plate){
+    public static Vehicle createVehicle(VehicleType type, String plate){
 
         switch(type) {
             case CAR:
@@ -17,7 +17,7 @@ public class VehicleFactory {
         return null;
     }
 
-    public Vehicle createVehicle(String type, String plate){
+    public static Vehicle createVehicle(String type, String plate){
         VehicleType vehicleType;
 
         try{
