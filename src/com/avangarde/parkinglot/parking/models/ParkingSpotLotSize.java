@@ -8,6 +8,22 @@ public class ParkingSpotLotSize {
     private SpotType type;
     private int size;
 
+    public SpotType getType() {
+        return type;
+    }
+
+    public void setType(SpotType type) {
+        this.type = type;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     private ParkingSpotLotSize(SpotType type, int size) {
         this.type = type;
         this.size = size;

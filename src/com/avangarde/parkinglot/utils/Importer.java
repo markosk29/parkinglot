@@ -3,7 +3,6 @@ package com.avangarde.parkinglot.utils;
 import com.avangarde.parkinglot.parking.interfaces.IFloorBuilder;
 import com.avangarde.parkinglot.parking.models.*;
 import com.avangarde.parkinglot.parking.services.ParkingFloor;
-import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -101,7 +100,7 @@ public class Importer {
 
             totalSpots = this.createSpots(floorElements);
 
-            newFloor.setTotalSpots(totalSpots);
+            newFloor.setSpotPairs(totalSpots);
 
             totalSpots.clear();
 
