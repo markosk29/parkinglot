@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="implemented IFloorBuilder and provided definition for createParkingFloor method.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputGenerator/IFloorBuilderImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/CarSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/CarSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/HandicapSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/HandicapSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/SpotType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/SpotType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingLot.java" afterDir="false" />
-    </list>
+    <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="Updated IFloorBuilder and created createParkingLot method." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,11 +73,11 @@
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="InputGenerator.Test" />
+      <option name="MAIN_CLASS_NAME" value="com.avangarde.parkinglot.InputGenerator.Test" />
       <module name="ParkingLotPj" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="InputGenerator.*" />
+          <option name="PATTERN" value="com.avangarde.parkinglot.InputGenerator.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627628715918</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated IFloorBuilder and created createParkingLot method.">
+      <created>1627634559049</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627634559049</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +170,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cleanup, removed classes, added .gitignore" />
     <MESSAGE value="implemented IFloorBuilder and provided definition for createParkingFloor method." />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented IFloorBuilder and provided definition for createParkingFloor method." />
+    <MESSAGE value="Updated IFloorBuilder and created createParkingLot method." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated IFloorBuilder and created createParkingLot method." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

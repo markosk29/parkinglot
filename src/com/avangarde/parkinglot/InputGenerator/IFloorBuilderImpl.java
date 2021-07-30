@@ -1,11 +1,10 @@
-package InputGenerator;
+package com.avangarde.parkinglot.InputGenerator;
 
 import com.avangarde.parkinglot.parking.interfaces.IFloorBuilder;
 import com.avangarde.parkinglot.parking.models.*;
 import com.avangarde.parkinglot.parking.services.ParkingFloor;
 import com.avangarde.parkinglot.parking.services.ParkingLot;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class IFloorBuilderImpl implements IFloorBuilder {
