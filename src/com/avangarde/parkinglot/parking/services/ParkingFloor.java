@@ -1,10 +1,10 @@
 package com.avangarde.parkinglot.parking.services;
 
 import com.avangarde.parkinglot.parking.models.ParkingSpot;
-import com.avangarde.parkinglot.parking.models.ParkingSpotLotSize;
 import com.avangarde.parkinglot.parking.models.SpotType;
 import com.avangarde.parkinglot.vehicle.models.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,10 +12,6 @@ public class ParkingFloor {
     private int floorID;
     private Map<SpotType, List<ParkingSpot>> spotPairs;
 
-//    public ParkingFloor() {
-//
-//    }
-//
     private ParkingFloor(int idParkingFloor, Map<SpotType, List<ParkingSpot>> totalSpots) {
         this.floorID = idParkingFloor;
         this.spotPairs = totalSpots;

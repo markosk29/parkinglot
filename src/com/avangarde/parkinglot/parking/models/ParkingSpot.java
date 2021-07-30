@@ -1,7 +1,5 @@
 package com.avangarde.parkinglot.parking.models;
 
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
-
 public abstract class ParkingSpot {
 
     private boolean isOcuppied;
