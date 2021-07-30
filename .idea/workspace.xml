@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="cleanup, removed classes, added .gitignore">
-      <change afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotFactory.java" afterDir="false" />
+    <list default="true" id="f036ce8f-e4b8-470a-ba65-a23ee6edee2f" name="Default Changelist" comment="implemented IFloorBuilder and provided definition for createParkingFloor method.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputGenerator/InputGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/models/ParkingSpotLotSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/parking/services/ParkingFloor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/avangarde/parkinglot/utils/Import.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="stefan-createpfloor" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -120,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627560022494</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implemented IFloorBuilder and provided definition for createParkingFloor method.">
+      <created>1627570991655</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1627570991655</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +142,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cleanup, removed classes, added .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleanup, removed classes, added .gitignore" />
+    <MESSAGE value="implemented IFloorBuilder and provided definition for createParkingFloor method." />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented IFloorBuilder and provided definition for createParkingFloor method." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ParkingLotProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1627464630451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
