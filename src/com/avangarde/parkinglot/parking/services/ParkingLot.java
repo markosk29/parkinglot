@@ -11,6 +11,10 @@ public class ParkingLot {
     public ParkingLot() {
     }
 
+    public ParkingLot(List<ParkingFloor> floors) {
+        this.floors = floors;
+    }
+
     public ParkingLot(int noOfFloors) {
         createFloors(noOfFloors);
     }
@@ -32,7 +36,6 @@ public class ParkingLot {
         System.out.println("Too many floors!!");
         return false;
     }
-
 
     public boolean parkVehicle(Vehicle vehicle) {
         for (var pf : floors
@@ -57,7 +60,6 @@ public class ParkingLot {
         return false;
 
     }
-
 
     public List<ParkingFloor> getFloors() {
         return floors;
