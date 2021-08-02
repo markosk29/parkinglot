@@ -98,7 +98,7 @@ public class ParkingFloor {
     public String getFreeSpotsSummary() {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
-        for (var entry : spotPairs.entrySet()) {
+        for (var entry : this.spotPairs.entrySet()) {
             for (var spot : entry.getValue()) {
                 if (!spot.isOcuppied()) {
                     count++;
