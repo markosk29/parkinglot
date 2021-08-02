@@ -99,6 +99,8 @@ public class ParkingFloor {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
         for (var entry : this.spotPairs.entrySet()) {
+            count = 0;
+
             for (var spot : entry.getValue()) {
                 if (!spot.isOcuppied()) {
                     count++;
@@ -106,7 +108,7 @@ public class ParkingFloor {
             }
             //            Lambda Expressions variant:
 //            int count = (int) entry.getValue().stream().filter(spot -> !spot.isOcuppied()).count();
-            stringBuilder.append(entry.getKey() + ": " + count + "free spots");
+            stringBuilder.append("\n" + entry.getKey() + ": " + count + " free spots ");
         }
         return stringBuilder.toString();
     }
