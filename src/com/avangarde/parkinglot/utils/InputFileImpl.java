@@ -1,5 +1,6 @@
 package com.avangarde.parkinglot.utils;
 
+import com.avangarde.parkinglot.InputGenerator.IParkingLotAsStringImpl;
 import com.avangarde.parkinglot.parking.models.ParkingSpot;
 import com.avangarde.parkinglot.parking.models.ParkingSpotFactory;
 import com.avangarde.parkinglot.parking.models.SpotType;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class InputFileImpl implements IInputFile{
 
@@ -59,9 +62,27 @@ public class InputFileImpl implements IInputFile{
     }
 
     @Override
-    public File generate(ParkingLot parkingLot, String path) {
+    public File generate(ParkingLot parkingLot, String path, String vehicles) {
+        try {
+            File myObj = new File(path);
+            IParkingLotAsStringImpl iParkingLotAsString = new IParkingLotAsStringImpl();
+
+            String allInput = iParkingLotAsString.write(parkingLot) + "" + vehicles;
+
+            Files.writeString(Path.of(myObj.getPath()), allInput);
+
+
+            return myObj;
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
         return null;
     }
+
+
+
+
 
     public String readFromFile(String path) {
         StringBuilder stringBuilder = new StringBuilder();

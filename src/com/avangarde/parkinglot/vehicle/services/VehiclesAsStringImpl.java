@@ -6,6 +6,8 @@ import com.avangarde.parkinglot.vehicle.models.Vehicle;
 import java.util.List;
 
 public class VehiclesAsStringImpl implements IVehicleAsString {
+    public VehiclesAsStringImpl() {
+    }
 
     @Override
     public String write(List<Vehicle> vehicles) {
@@ -13,8 +15,12 @@ public class VehiclesAsStringImpl implements IVehicleAsString {
 
         stringBuilder.append("\n").append("VehicleStart").append("\n");
 
-        for(Vehicle vehicle : vehicles){
-            stringBuilder.append(vehicle.toString()).append("\n");
+        for (var vehicle : vehicles)
+        {
+            if (vehicle != null) {
+
+                stringBuilder.append(vehicle.toString()).append("\n");
+            }
         }
 
         stringBuilder.append("VehicleEnd").append("\n");

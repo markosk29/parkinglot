@@ -10,5 +10,5 @@ public interface IInputFile {
 
     ParkingLot readParkingLot(String path);
     List<Vehicle> readVehicles(String path);
-    File generate(ParkingLot parkingLot, String path);
+    File generate(ParkingLot parkingLot, String path, String vehicles);
 }
