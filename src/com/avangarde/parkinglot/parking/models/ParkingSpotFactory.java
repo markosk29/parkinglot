@@ -18,4 +18,29 @@ public class ParkingSpotFactory {
                 return null;
         }
     }
+
+    public ParkingSpot createParkingSpot(String type) {
+        SpotType spotType;
+
+        try {
+            spotType = SpotType.valueOf(type);
+        } catch(IllegalArgumentException e) {
+            return null;
+        }
+
+        switch (spotType) {
+            case CAR:
+                return new CarSpot();
+            case BIKE:
+                return new BikeSpot();
+            case ELECTRIC:
+                return new ElectricSpot();
+            case HANDICAP:
+                return new HandicapSpot();
+            case MOTORBIKE:
+                return new MotorbikeSpot();
+            default:
+                return null;
+        }
+    }
 }
