@@ -11,7 +11,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
 
-        String path = "C:\\Users\\Print Station\\Desktop\\Projects\\temp\\filename.txt";
+        String path = "input.txt";
 
         InputFileImpl impl = new InputFileImpl();
 
