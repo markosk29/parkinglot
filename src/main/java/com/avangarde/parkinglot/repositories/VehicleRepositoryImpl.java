@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleRepositoryImpl implements VehicleRepository {
+    public static final String VEHICLE_TABLE_NAME = "parking.vehicles";
+    public static final String VEHICLE_TYPE_COLUMN_NAME = "vehicle_type";
+    public static final String VEHICLE_PLATE_COLUMN_NAME = "plate";
 
     private List<Vehicle> vehicles;
 
@@ -65,5 +68,31 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         for(Vehicle vehicle : this.vehicles){
             System.out.println(vehicle.getInfo());
         }
+    }
+
+    @Override
+    public Vehicle findByIdVehicle(int id) throws SQLException {
+        String sql = "SELECT * FROM " + VEHICLE_TABLE_NAME + " WHERE id= ? ;" ;
+        DBUtil dbUtil = new DBUtil();
+        dbUtil.open();
+        ResultSet resultSet = null;
+        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
+        ) {
+            pstmt.setInt(1, id);
+            resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                String type = resultSet.getString(VEHICLE_TYPE_COLUMN_NAME);
+                String plate = resultSet.getString(VEHICLE_PLATE_COLUMN_NAME);
+                Vehicle vehicle = new VehicleBuilder().createVehicle(type, plate);
+                return vehicle;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            resultSet.close();
+        }
+        return null;
     }
 }
