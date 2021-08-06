@@ -1,11 +1,9 @@
 package com.avangarde.parkinglot.InputGenerator;
 
-import com.avangarde.parkinglot.parking.services.ParkingLot;
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.utils.InputFileImpl;
 import com.avangarde.parkinglot.utils.Utils;
-import com.avangarde.parkinglot.vehicle.services.VehiclesAsStringImpl;
-
-import java.nio.file.Paths;
+import com.avangarde.parkinglot.vehicle.VehiclesAsStringImpl;
 //testing Justice League InputGenerator
 
 public class TestMainJL {

@@ -1,4 +1,6 @@
-package com.avangarde.parkinglot.parking.models;
+package com.avangarde.parkinglot.parking.entities;
+
+import com.avangarde.parkinglot.parking.SpotType;
 
 public class ElectricSpot extends ParkingSpot {
 

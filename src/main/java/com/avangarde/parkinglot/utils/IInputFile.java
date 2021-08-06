@@ -1,7 +1,7 @@
 package com.avangarde.parkinglot.utils;
 
-import com.avangarde.parkinglot.parking.services.ParkingLot;
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
+import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
 import java.io.File;
 import java.util.List;

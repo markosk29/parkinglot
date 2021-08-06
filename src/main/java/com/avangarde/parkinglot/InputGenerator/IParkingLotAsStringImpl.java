@@ -1,9 +1,9 @@
 package com.avangarde.parkinglot.InputGenerator;
 
 import com.avangarde.parkinglot.parking.interfaces.IParkingLotAsString;
-import com.avangarde.parkinglot.parking.models.SpotType;
-import com.avangarde.parkinglot.parking.services.ParkingFloor;
-import com.avangarde.parkinglot.parking.services.ParkingLot;
+import com.avangarde.parkinglot.parking.SpotType;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
 
 public class IParkingLotAsStringImpl implements IParkingLotAsString {
     //        PSTART
@@ -39,7 +39,7 @@ public class IParkingLotAsStringImpl implements IParkingLotAsString {
     @Override
     public String write(ParkingFloor parkingFloor) {
         StringBuilder parkingFloorAsString = new StringBuilder();
-        parkingFloorAsString.append(parkingFloor.getFloorID() + " ");
+        parkingFloorAsString.append(parkingFloor.getParkingFloorNumber() + " ");
 
         for (SpotType spotType : parkingFloor.getSpotPairs().keySet()
         ) {

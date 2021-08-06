@@ -1,13 +1,13 @@
 package com.avangarde.parkinglot.utils;
 
 import com.avangarde.parkinglot.InputGenerator.IParkingLotAsStringImpl;
-import com.avangarde.parkinglot.parking.models.ParkingSpot;
-import com.avangarde.parkinglot.parking.models.ParkingSpotFactory;
-import com.avangarde.parkinglot.parking.models.SpotType;
-import com.avangarde.parkinglot.parking.services.ParkingFloor;
-import com.avangarde.parkinglot.parking.services.ParkingLot;
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
-import com.avangarde.parkinglot.vehicle.services.VehicleBuilder;
+import com.avangarde.parkinglot.parking.entities.ParkingSpot;
+import com.avangarde.parkinglot.parking.ParkingSpotFactory;
+import com.avangarde.parkinglot.parking.SpotType;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
+import com.avangarde.parkinglot.vehicle.entities.Vehicle;
+import com.avangarde.parkinglot.vehicle.VehicleBuilder;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -79,10 +79,6 @@ public class InputFileImpl implements IInputFile{
         }
         return null;
     }
-
-
-
-
 
     public String readFromFile(String path) {
         StringBuilder stringBuilder = new StringBuilder();

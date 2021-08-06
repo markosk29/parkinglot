@@ -1,20 +1,29 @@
-package com.avangarde.parkinglot.parking.services;
+package com.avangarde.parkinglot.parking.entities;
 
-import com.avangarde.parkinglot.parking.models.ParkingSpot;
-import com.avangarde.parkinglot.parking.models.SpotType;
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
+import com.avangarde.parkinglot.database.Identity;
+import com.avangarde.parkinglot.parking.SpotType;
+import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ParkingFloor {
-    private int floorID;
+public class ParkingFloor extends Identity {
+
+    private int parkingFloorNumber;
+    private int parkingLotId;
     private Map<SpotType, List<ParkingSpot>> spotPairs;
 
-    private ParkingFloor(int idParkingFloor, Map<SpotType, List<ParkingSpot>> totalSpots) {
-        this.floorID = idParkingFloor;
+    private ParkingFloor(int parkingFloorNumber, Map<SpotType, List<ParkingSpot>> totalSpots) {
+        this.parkingFloorNumber = parkingFloorNumber;
         this.spotPairs = totalSpots;
+    }
+
+    public int getParkingLotId() {
+        return parkingLotId;
+    }
+
+    public void setParkingLotId(int parkingLotId) {
+        this.parkingLotId = parkingLotId;
     }
 
     public static class ParkingFloorBuilder {
@@ -40,16 +49,16 @@ public class ParkingFloor {
         }
     }
 
-    public ParkingFloor(int floorID) {
-        this.floorID = floorID;
+    public ParkingFloor(int parkingFloorNumber) {
+        this.parkingFloorNumber = parkingFloorNumber;
     }
 
-    public void setFloorID(int floorID) {
-        this.floorID = floorID;
+    public void setParkingFloorNumber(int parkingFloorNumber) {
+        this.parkingFloorNumber = parkingFloorNumber;
     }
 
-    public int getFloorID() {
-        return floorID;
+    public int getParkingFloorNumber() {
+        return parkingFloorNumber;
     }
 
     public void addParkingSpots(SpotType type, List<ParkingSpot> spots) {
@@ -74,7 +83,7 @@ public class ParkingFloor {
                 }
             }
         }
-        System.out.println("No spots available on floor: " + this.floorID);
+        System.out.println("No spots available on floor: " + this.parkingFloorNumber);
         return false;
     }
 
@@ -90,7 +99,7 @@ public class ParkingFloor {
                 }
             }
         }
-        System.out.println("New free spot on floor: " + this.floorID);
+        System.out.println("New free spot on floor: " + this.parkingFloorNumber);
         return false;
     }
 
@@ -102,7 +111,7 @@ public class ParkingFloor {
             count = 0;
 
             for (var spot : entry.getValue()) {
-                if (!spot.isOcuppied()) {
+                if (!spot.isOccupied()) {
                     count++;
                 }
             }

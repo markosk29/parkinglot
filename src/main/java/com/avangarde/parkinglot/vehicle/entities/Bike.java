@@ -1,4 +1,6 @@
-package com.avangarde.parkinglot.vehicle.models;
+package com.avangarde.parkinglot.vehicle.entities;
+
+import com.avangarde.parkinglot.vehicle.VehicleType;
 
 public class Bike extends Vehicle {
     public Bike() {

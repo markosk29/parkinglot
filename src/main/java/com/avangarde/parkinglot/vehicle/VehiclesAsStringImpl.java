@@ -1,7 +1,7 @@
-package com.avangarde.parkinglot.vehicle.services;
+package com.avangarde.parkinglot.vehicle;
 
 import com.avangarde.parkinglot.vehicle.interfaces.IVehicleAsString;
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
+import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
 import java.util.List;
 

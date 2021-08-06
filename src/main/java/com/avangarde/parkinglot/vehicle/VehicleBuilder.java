@@ -1,7 +1,7 @@
-package com.avangarde.parkinglot.vehicle.services;
+package com.avangarde.parkinglot.vehicle;
 
 import com.avangarde.parkinglot.vehicle.interfaces.IVehicleBuilder;
-import com.avangarde.parkinglot.vehicle.models.*;
+import com.avangarde.parkinglot.vehicle.entities.*;
 
 public class VehicleBuilder implements IVehicleBuilder {
     private VehicleType type;

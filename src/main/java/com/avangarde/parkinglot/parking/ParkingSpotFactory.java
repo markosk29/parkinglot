@@ -1,4 +1,7 @@
-package com.avangarde.parkinglot.parking.models;
+package com.avangarde.parkinglot.parking;
+
+import com.avangarde.parkinglot.parking.SpotType;
+import com.avangarde.parkinglot.parking.entities.*;
 
 public class ParkingSpotFactory {
     public ParkingSpot createParkingSpot(SpotType type) {

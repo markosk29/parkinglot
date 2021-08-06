@@ -1,11 +1,13 @@
-package com.avangarde.parkinglot.parking.services;
+package com.avangarde.parkinglot.parking.entities;
 
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
+import com.avangarde.parkinglot.database.Identity;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
+import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLot {
+public class ParkingLot extends Identity {
     List<ParkingFloor> floors = new ArrayList<>();
 
     public ParkingLot() {
@@ -68,7 +70,7 @@ public class ParkingLot {
     public void summary() {
         for (ParkingFloor floor:
                 floors) {
-            System.out.println("Floor " + floor.getFloorID() + "has free spots: " + floor.getFreeSpotsSummary() + "\n");
+            System.out.println("Floor " + floor.getParkingFloorNumber() + "has free spots: " + floor.getFreeSpotsSummary() + "\n");
         }
     }
 }

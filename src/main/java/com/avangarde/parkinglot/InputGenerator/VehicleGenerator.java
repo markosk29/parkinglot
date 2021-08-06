@@ -1,10 +1,10 @@
 package com.avangarde.parkinglot.InputGenerator;
 
-import com.avangarde.parkinglot.parking.models.SpotType;
-import com.avangarde.parkinglot.parking.services.ParkingFloor;
-import com.avangarde.parkinglot.parking.services.ParkingLot;
-import com.avangarde.parkinglot.vehicle.models.Vehicle;
-import com.avangarde.parkinglot.vehicle.services.VehicleFactory;
+import com.avangarde.parkinglot.parking.SpotType;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
+import com.avangarde.parkinglot.vehicle.entities.Vehicle;
+import com.avangarde.parkinglot.vehicle.VehicleFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;

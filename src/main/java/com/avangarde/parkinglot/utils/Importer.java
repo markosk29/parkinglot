@@ -1,8 +1,10 @@
 package com.avangarde.parkinglot.utils;
 
+import com.avangarde.parkinglot.parking.ParkingSpotLotSize;
+import com.avangarde.parkinglot.parking.SpotType;
 import com.avangarde.parkinglot.parking.interfaces.IFloorBuilder;
-import com.avangarde.parkinglot.parking.models.*;
-import com.avangarde.parkinglot.parking.services.ParkingFloor;
+import com.avangarde.parkinglot.parking.entities.*;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

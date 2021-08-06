@@ -2,7 +2,8 @@ package com.avangarde.parkinglot.utils;
 
 import java.sql.*;
 
-public class DBUtil {
+public class
+DBUtil {
     public static final String USER = "postgres";
     public static final String PASS = "postgres";
     public static final String URL = "jdbc:postgresql://localhost/parking_db";

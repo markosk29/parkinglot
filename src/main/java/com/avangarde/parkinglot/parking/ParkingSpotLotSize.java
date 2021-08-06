@@ -1,4 +1,4 @@
-package com.avangarde.parkinglot.parking.models;
+package com.avangarde.parkinglot.parking;
 
 /**
  * Pairs of spot types and number of spots
