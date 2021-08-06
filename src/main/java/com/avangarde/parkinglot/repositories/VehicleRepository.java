@@ -9,4 +9,5 @@ import java.util.List;
 public interface VehicleRepository {
     List<Vehicle> loadLatestVehicles(ParkingLot parkingLot);
     boolean updateParkingSpot(int id, boolean isOccupied);
+    Vehicle findByIdVehicle(int id) throws SQLException;
 }
