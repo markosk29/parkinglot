@@ -68,7 +68,9 @@ public class ParkingLot {
     public void summary() {
         for (ParkingFloor floor:
                 floors) {
-            System.out.println("Floor " + floor.getFloorID() + "has free spots: " + floor.getFreeSpotsSummary() + "\n");
+            System.out.print("Floor " + floor.getFloorID() + ":\n" + floor.getTotalSpotsInParkingLot());
+            System.out.print("Free spots: " + floor.getFreeSpotsSummary() + "\n");
+            System.out.println();
         }
     }
 }
