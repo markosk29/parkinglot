@@ -1,13 +1,13 @@
-package com.avangarde.parkinglot.utils;
+package com.avangarde.parkinglot.IO.read;
 
-import com.avangarde.parkinglot.InputGenerator.IParkingLotAsStringImpl;
+import com.avangarde.parkinglot.IO.write.IParkingLotAsStringImpl;
 import com.avangarde.parkinglot.parking.entities.ParkingSpot;
 import com.avangarde.parkinglot.parking.ParkingSpotFactory;
 import com.avangarde.parkinglot.parking.SpotType;
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.vehicle.entities.Vehicle;
-import com.avangarde.parkinglot.vehicle.VehicleBuilder;
+import com.avangarde.parkinglot.vehicle.VehicleBuilderImpl;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class InputFileImpl implements IInputFile{
+public class ReadFromFileImpl implements ReadFromFile {
 
     private String filePath;
     private int noOfFloors = 0;
@@ -48,9 +48,9 @@ public class InputFileImpl implements IInputFile{
             Vehicle newVehicle;
 
             if(veh[0].trim().equals("BIKE")) {
-                newVehicle = VehicleBuilder.builder().createVehicle(veh[0].trim(), "N/A");
+                newVehicle = VehicleBuilderImpl.builder().createVehicle(veh[0].trim(), "N/A");
             } else {
-                newVehicle = VehicleBuilder.builder().createVehicle(veh[0].trim(), veh[1].trim());
+                newVehicle = VehicleBuilderImpl.builder().createVehicle(veh[0].trim(), veh[1].trim());
             }
 
             if(newVehicle != null) {

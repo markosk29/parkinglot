@@ -1,6 +1,5 @@
-package com.avangarde.parkinglot.InputGenerator;
+package com.avangarde.parkinglot.IO.write;
 
-import com.avangarde.parkinglot.parking.interfaces.IParkingLotAsString;
 import com.avangarde.parkinglot.parking.SpotType;
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.parking.entities.ParkingLot;

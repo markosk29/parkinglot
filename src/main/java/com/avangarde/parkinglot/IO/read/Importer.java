@@ -1,8 +1,8 @@
-package com.avangarde.parkinglot.utils;
+package com.avangarde.parkinglot.IO.read;
 
 import com.avangarde.parkinglot.parking.ParkingSpotLotSize;
 import com.avangarde.parkinglot.parking.SpotType;
-import com.avangarde.parkinglot.parking.interfaces.IFloorBuilder;
+import com.avangarde.parkinglot.parking.FloorBuilder;
 import com.avangarde.parkinglot.parking.entities.*;
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 
@@ -21,7 +21,7 @@ public class Importer {
 
     private StringBuilder stringBuilder;
 
-    private IFloorBuilder floorBuilder;
+    private FloorBuilder floorBuilder;
 
     //createPFloor(int floorNo, List<>)
     //

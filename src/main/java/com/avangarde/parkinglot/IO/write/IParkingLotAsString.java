@@ -1,4 +1,4 @@
-package com.avangarde.parkinglot.parking.interfaces;
+package com.avangarde.parkinglot.IO.write;
 
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.parking.entities.ParkingLot;

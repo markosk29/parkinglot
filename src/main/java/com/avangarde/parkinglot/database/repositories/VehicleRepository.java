@@ -1,4 +1,4 @@
-package com.avangarde.parkinglot.repositories;
+package com.avangarde.parkinglot.database.repositories;
 
 import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.vehicle.entities.Vehicle;

@@ -1,4 +1,4 @@
-package com.avangarde.parkinglot.InputGenerator;
+package com.avangarde.parkinglot.IO.randomgeneration;
 
 import com.avangarde.parkinglot.parking.SpotType;
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;

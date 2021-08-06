@@ -1,10 +1,10 @@
-package com.avangarde.parkinglot.database;
+package com.avangarde.parkinglot;
 
-import com.avangarde.parkinglot.repositories.*;
-import com.avangarde.parkinglot.utils.InputFileImpl;
+import com.avangarde.parkinglot.database.repositories.*;
+import com.avangarde.parkinglot.IO.read.ReadFromFileImpl;
 import com.avangarde.parkinglot.utils.Utils;
 
-public class PersistTest {
+public class Persist {
 
    private static final String INPUT_PATH = Utils.resourcesPath() + "input.txt";
    private static ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();
@@ -12,21 +12,25 @@ public class PersistTest {
    private static ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepositoryImpl();
    private static VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
 
-    public static void main (String[] args) {
-        var inputFile = new InputFileImpl();
-        storeParking(inputFile);
-        storeVehicles(inputFile);
+    public static void main (String[] args) { // PersistTest
+        persistDBwithFileInput();
         // visually check DB
     }
 
-    private static void storeVehicles(InputFileImpl inputFile) {
+    public static void persistDBwithFileInput() {
+        var inputFile = new ReadFromFileImpl();
+        storeParking(inputFile);
+        storeVehicles(inputFile);
+    }
+
+    private static void storeVehicles(ReadFromFileImpl inputFile) {
         var vehicles = inputFile.readVehicles(INPUT_PATH);
         for (var vehicle : vehicles) {
             vehicle.setId(vehicleRepository.createOne(vehicle));
         }
     }
 
-    private static void storeParking(InputFileImpl inputFile) {
+    private static void storeParking(ReadFromFileImpl inputFile) {
         // read from file
         var lot = inputFile.readParkingLot(INPUT_PATH); // also creates dependencies (floors, spots)
         // store

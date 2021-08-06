@@ -1,11 +1,10 @@
-package com.avangarde.parkinglot.vehicle;
+package com.avangarde.parkinglot.IO.write;
 
-import com.avangarde.parkinglot.vehicle.interfaces.IVehicleAsString;
 import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
 import java.util.List;
 
-public class VehiclesAsStringImpl implements IVehicleAsString {
+public class VehiclesAsStringImpl implements VehicleAsString {
     public VehiclesAsStringImpl() {
     }
 

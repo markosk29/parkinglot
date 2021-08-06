@@ -1,7 +1,8 @@
-package com.avangarde.parkinglot.repositories;
+package com.avangarde.parkinglot;
 
-import com.avangarde.parkinglot.parking.services.ParkingFloor;
-import com.avangarde.parkinglot.parking.services.ParkingLot;
+import com.avangarde.parkinglot.database.repositories.*;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
 
 import java.sql.SQLException;
 
@@ -18,7 +19,7 @@ public class TestRepo {
         //testing ParkingFloorRepository
         ParkingFloorRepository parkingFloorRepository = new ParkingFloorRepositoryImpl();
         ParkingFloor parkingFloor = parkingFloorRepository.findByIdParkingFloor(2);
-        System.out.println(parkingFloor.getFreeSpotsSummary()+ "\n");
+        System.out.println(parkingFloor.getFreeSpotsSummary() + "\n");
 
         //testing ParkingLotRepository
         ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();

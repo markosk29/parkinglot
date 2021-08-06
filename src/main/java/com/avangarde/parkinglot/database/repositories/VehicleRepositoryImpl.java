@@ -1,9 +1,9 @@
-package com.avangarde.parkinglot.repositories;
+package com.avangarde.parkinglot.database.repositories;
 
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.utils.DBUtil;
-import com.avangarde.parkinglot.vehicle.VehicleBuilder;
+import com.avangarde.parkinglot.vehicle.VehicleBuilderImpl;
 import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
 import java.sql.Connection;
@@ -83,7 +83,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
                 if (freeSpots.containsKey(resultSet.getString("vehicle_type").toUpperCase()) &&
                         freeSpots.get(resultSet.getString("vehicle_type").toUpperCase()) > 0) {
 
-                    vehicles.add(VehicleBuilder.builder()
+                    vehicles.add(VehicleBuilderImpl.builder()
                             .createVehicle(resultSet.getString("vehicle_type").toUpperCase(),
                                     resultSet.getString("plate")));
 
@@ -155,7 +155,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
             while (resultSet.next()) {
                 String type = resultSet.getString(VEHICLE_TYPE_COLUMN_NAME);
                 String plate = resultSet.getString(VEHICLE_PLATE_COLUMN_NAME);
-                Vehicle vehicle = new VehicleBuilder().createVehicle(type, plate);
+                Vehicle vehicle = new VehicleBuilderImpl().createVehicle(type, plate);
                 return vehicle;
             }
 
