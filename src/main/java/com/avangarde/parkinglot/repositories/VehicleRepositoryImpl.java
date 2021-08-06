@@ -3,6 +3,7 @@ package com.avangarde.parkinglot.repositories;
 import com.avangarde.parkinglot.parking.services.ParkingFloor;
 import com.avangarde.parkinglot.parking.services.ParkingLot;
 import com.avangarde.parkinglot.utils.DBUtil;
+
 import com.avangarde.parkinglot.vehicle.models.Vehicle;
 import com.avangarde.parkinglot.vehicle.services.VehicleBuilder;
 
@@ -29,37 +30,53 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         dbUtil.open();
 
         Map<String, Integer> freeSpots = getNumberOfVehicles(parkingLot);
+        int noOfEntries = freeSpots.size() + 1;
 
         String query = "SELECT * FROM parking.vehicles WHERE vehicle_type IN (";
 
-        for(var set : freeSpots.entrySet()) {
-            query += "'" +set.getKey()+ "',";
+        for(int i = 0; i < noOfEntries - 1; i++) {
+            query += "?,";
 
         }
 
         query = query.substring(0, query.length() - 1);
         query += ") ORDER BY id DESC;";
 
-        System.out.println(query);
+        try(PreparedStatement statement = dbUtil.getConn().prepareStatement(query)){
+            int index = 1;
 
-        try(Statement statement = dbUtil.getConn().createStatement();
-            ResultSet resultSet = statement.executeQuery(query)){
+            for(var set : freeSpots.entrySet()) {
+                if(index < noOfEntries) {
+                    statement.setString(index, set.getKey());
 
-            while(resultSet.next()) {
-                if(freeSpots.containsKey(resultSet.getString("vehicle_type")) &&
-                        freeSpots.get(resultSet.getString("vehicle_type")) > 0) {
-
-                    vehicles.add(VehicleBuilder.builder()
-                            .createVehicle(resultSet.getString("vehicle_type"), resultSet.getString("plate")));
-
-                    freeSpots.replace(resultSet.getString("vehicle_type"),
-                            freeSpots.get(resultSet.getString("vehicle_type")) - 1);
+                    index++;
                 }
             }
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()) {
+                if(freeSpots.containsKey(resultSet.getString("vehicle_type").toUpperCase()) &&
+                        freeSpots.get(resultSet.getString("vehicle_type").toUpperCase()) > 0) {
+
+                    vehicles.add(VehicleBuilder.builder()
+                            .createVehicle(resultSet.getString("vehicle_type").toUpperCase(),
+                                    resultSet.getString("plate")));
+
+                    freeSpots.replace(resultSet.getString("vehicle_type").toUpperCase(),
+                            freeSpots.get(resultSet.getString("vehicle_type").toUpperCase()) - 1);
+                }
+            }
+
+            System.out.println("Loaded " +vehicles.size()+ " vehicles from DB.");
+
+            resultSet.close();
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        dbUtil.close();
 
         return vehicles;
     }
@@ -70,19 +87,28 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         dbUtil.open();
 
         String query = "UPDATE parking.parking_spots " +
-                "SET is_occupied = " +isOccupied+
-                " WHERE id = " +id+ ";";
+                "SET is_occupied = ? " +
+                " WHERE id = ? ;";
 
         try(Connection conn = dbUtil.getConn();
             PreparedStatement preparedStatement = conn.prepareStatement(query)){
 
+            preparedStatement.setBoolean(1, isOccupied);
+            preparedStatement.setInt(2, id);
+
             preparedStatement.execute();
+
+            System.out.println("Parking spot " +id+ " occupied status: " +isOccupied);
+
+            preparedStatement.close();
 
             return true;
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        dbUtil.close();
 
         return false;
     }
@@ -99,8 +125,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         DBUtil dbUtil = new DBUtil();
         dbUtil.open();
         ResultSet resultSet = null;
-        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
-        ) {
+        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql)) {
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
             while (resultSet.next()) {

@@ -6,4 +6,5 @@ import java.sql.SQLException;
 
 public interface ParkingLotRepository {
     ParkingLot findByIdParkingLot(int id) throws SQLException;
+    ParkingLot loadLatestParkingLot();
 }
