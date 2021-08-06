@@ -120,4 +120,15 @@ public class ParkingFloor {
     public void setSpotPairs(Map<SpotType, List<ParkingSpot>> spotPairs) {
         this.spotPairs = spotPairs;
     }
+
+    public String getTotalSpotsInParkingLot() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (SpotType spotType : this.spotPairs.keySet()
+        ) {
+            stringBuilder.append("Total spots of type " + spotType + ": " + this.spotPairs.get(spotType).size() + "\n");
+        }
+        return stringBuilder.toString();
+    }
 }
+
+

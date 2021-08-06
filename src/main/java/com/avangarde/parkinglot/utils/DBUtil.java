@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class DBUtil {
     public static final String USER = "postgres";
-    public static final String PASS = "postgres";
-    public static final String URL = "jdbc:postgresql://localhost/parking_db";
+    public static final String PASS = "123patru";
+    public static final String URL = "jdbc:postgresql://localhost/postgres";
     private Connection conn;
 
 
