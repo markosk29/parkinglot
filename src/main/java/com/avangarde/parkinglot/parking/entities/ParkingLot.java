@@ -25,8 +25,6 @@ public class ParkingLot extends Identity {
         int minFloors = 3;
         for(int i = 0; i < minFloors; i++) {
             ParkingFloor floor = new ParkingFloor(i);
-//            redundant, constructorul face deja set pe id cu param i:
-//            floor.setIdParkingFloor(i);
             this.addFloor(floor);
         }
     }
@@ -70,7 +68,9 @@ public class ParkingLot extends Identity {
     public void summary() {
         for (ParkingFloor floor:
                 floors) {
-            System.out.println("Floor " + floor.getParkingFloorNumber() + "has free spots: " + floor.getFreeSpotsSummary() + "\n");
+            System.out.print("Floor " + floor.getParkingFloorNumber() + ":\n" + floor.getTotalSpotsInParkingLot());
+            System.out.print("Free spots: " + floor.getFreeSpotsSummary() + "\n");
+            System.out.println();
         }
     }
 }

@@ -2,6 +2,8 @@ package com.avangarde.parkinglot.repositories;
 
 import com.avangarde.parkinglot.parking.entities.ParkingLot;
 
+import java.sql.SQLException;
+
 public interface ParkingLotRepository {
     /**
      *
@@ -9,4 +11,6 @@ public interface ParkingLotRepository {
      * @return id of the generated row
      */
     int createOne(ParkingLot parkingLot);
+    ParkingLot findByIdParkingLot(int id) throws SQLException;
+    ParkingLot loadLatestParkingLot();
 }
