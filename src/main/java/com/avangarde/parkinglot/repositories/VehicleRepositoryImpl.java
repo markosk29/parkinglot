@@ -1,10 +1,8 @@
 package com.avangarde.parkinglot.repositories;
 
-import com.avangarde.parkinglot.parking.models.SpotType;
 import com.avangarde.parkinglot.parking.services.ParkingFloor;
 import com.avangarde.parkinglot.parking.services.ParkingLot;
 import com.avangarde.parkinglot.utils.DBUtil;
-import com.avangarde.parkinglot.utils.InputFileImpl;
 import com.avangarde.parkinglot.vehicle.models.Vehicle;
 import com.avangarde.parkinglot.vehicle.services.VehicleBuilder;
 
@@ -14,10 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO:
- *  - TEST loadLatestVehicles method
- */
 public class VehicleRepositoryImpl implements VehicleRepository {
 
     private List<Vehicle> vehicles;
@@ -115,11 +109,5 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         }
 
         return freeSpots;
-    }
-
-    public static void main(String[] args) {
-        InputFileImpl inputFile = new InputFileImpl();
-        VehicleRepositoryImpl vehicleRepository = new VehicleRepositoryImpl();
-        vehicleRepository.loadLatestVehicles(inputFile.readParkingLot("C:\\Users\\Kosa Markos\\IdeaProjects\\parkinglot\\src\\main\\resources\\input.txt"));
     }
 }
