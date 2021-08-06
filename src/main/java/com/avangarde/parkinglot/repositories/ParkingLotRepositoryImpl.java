@@ -6,6 +6,7 @@ import com.avangarde.parkinglot.parking.models.SpotType;
 import com.avangarde.parkinglot.parking.services.ParkingFloor;
 import com.avangarde.parkinglot.parking.services.ParkingLot;
 import com.avangarde.parkinglot.utils.DBUtil;
+import org.postgresql.PGStatement;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,6 +55,44 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
 
         return null;
 
+    }
+
+    @Override
+    public ParkingLot loadLatestParkingLot() {
+        String query = "SELECT * FROM parking.parking_lots ORDER BY id DESC LIMIT 1;";
+
+        int parkingLotId;
+
+        DBUtil dbUtil = new DBUtil();
+        dbUtil.open();
+
+        try{
+            PreparedStatement statement = dbUtil.getConn().prepareStatement(query);
+            PGStatement pgStatement = (PGStatement) statement;
+            pgStatement.setPrepareThreshold(1);
+            ResultSet resultSet = statement.executeQuery();
+
+            resultSet.next();
+            parkingLotId = resultSet.getInt("id");
+
+            resultSet.close();
+            statement.close();
+
+            List<ParkingFloor> floors = findFloorsByLotId(parkingLotId);
+
+            System.out.println("Latest parking lot loaded from DB.");
+
+            return new ParkingLot(floors);
+
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        dbUtil.close();
+
+        System.out.println("Failed to find the latest parking lot.");
+
+        return null;
     }
 
     public List<ParkingFloor> findFloorsByLotId(int id) throws SQLException {
