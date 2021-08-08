@@ -1,10 +1,11 @@
 package com.avangarde.parkinglot;
 
-import com.avangarde.parkinglot.repositories.ParkingLotRepository;
-import com.avangarde.parkinglot.repositories.ParkingLotRepositoryImpl;
-import com.avangarde.parkinglot.utils.DBUtil;
+import com.avangarde.parkinglot.parking.services.ParkingLot;
+import com.avangarde.parkinglot.repositories.*;
+import com.avangarde.parkinglot.vehicle.models.Vehicle;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ParkinglotApplication {
 
@@ -14,12 +15,27 @@ public class ParkinglotApplication {
 
 	public static void main(String[] args) throws SQLException {
 
+		//Initialize DB repos
+		ParkingLotRepositoryImpl parkingLotRepository = new ParkingLotRepositoryImpl();
+		ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
+		VehicleRepositoryImpl vehicleRepository = new VehicleRepositoryImpl();
 
-		ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();
-		parkingLotRepository.findByIdParkingLot(1).summary();
+		//Fetch parking lot from DB and store it
+		ParkingLot parkingLot = parkingLotRepository.findByIdParkingLot(1);
+		parkingLot.summary();
+
+		//Fetch free parking spots and vehicles lists
+		List<Integer> freeSpotIDs = parkingSpotRepository.getFreeParkingSpotIDsFromDB();
+		List<Vehicle> vehicleList = vehicleRepository.loadLatestVehicles(parkingLot);
+
+		//Park vehicles
+		parkingLotRepository.occupySpotsFromDB(vehicleList, freeSpotIDs, parkingLot);
+		parkingLot.summary();
+
+		//Unpark vehicles
 		UnPark unPark = new UnPark();
 		unPark.unparkRandomVehicles();
-		parkingLotRepository.findByIdParkingLot(1).summary();
+		parkingLot.summary();
 
 
 	}
