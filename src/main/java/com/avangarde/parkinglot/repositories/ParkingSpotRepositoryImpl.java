@@ -54,8 +54,8 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         dbUtil.open();
 
 
-        String sql = "SELECT * FROM PARKING_SPOTS_TABLE_NAME WHERE is_occupied = false;";
-        //String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
+        //String sql = "SELECT * FROM PARKING_SPOTS_TABLE_NAME WHERE is_occupied = false;";
+        String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
         ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
 
         try {

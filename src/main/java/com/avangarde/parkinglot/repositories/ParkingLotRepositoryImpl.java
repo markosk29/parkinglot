@@ -132,17 +132,13 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
         //String freeSpotsIDsString = Arrays.toString(freeSpotsIDs.toArray()).replace("[","").replace("]","");
         int count = 0;
 
-        //Check if there are more vehicles than free parking spots
-        //while(!(parkedVehicles.size() >= freeSpotsIDs.size()) || !(count >= freeSpotsIDs.size()))
 
         //Check if the given list has any free parking spots
         if (freeSpotsIDs.size() !=0 ) {
 
-            //Check if there are more vehicles than free parking spots
-            if (freeSpotsIDs.size() < vehicleList.size()) {
-                System.out.println("There are not enough parking spots for the given vehicles.\n");
 
-            } else {
+            while(!(count >= freeSpotsIDs.size()) || !(count >= vehicleList.size())) {
+
                 for(Vehicle vehicle : vehicleList) {
                     System.out.println("Your vehicle: " + vehicle);
 
@@ -155,9 +151,9 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
                             parkingSpotRepository.parkVehicleOnDBSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID);
                             parkedVehicles.add(vehicle);
                             parkingLot.parkVehicle(vehicle);
-                            count++;
                             break;
                         }
+                        count++;
                     }
                 }
                 System.out.println(parkedVehicles.size() + " out of " +vehicleList.size() + " vehicles parked \n");
