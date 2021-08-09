@@ -25,17 +25,17 @@ public class ParkinglotApplication {
 		parkingLot.summary();
 
 		//Fetch free parking spots and vehicles lists
-		List<Integer> freeSpotIDs = parkingSpotRepository.getFreeParkingSpotIDsFromDB();
+		List<Integer> freeSpotIDs = parkingSpotRepository.getFreeParkingSpotIDs();
 		List<Vehicle> vehicleList = vehicleRepository.loadLatestVehicles(parkingLot);
 
 		//Park vehicles
-		parkingLotRepository.occupySpotsFromDB(vehicleList, freeSpotIDs, parkingLot);
+		parkingLotRepository.occupySpots(vehicleList, freeSpotIDs, parkingLot, 2);
 		parkingLot.summary();
 
-		//Unpark vehicles
-		UnPark unPark = new UnPark();
-		unPark.unparkRandomVehicles();
-		parkingLot.summary();
+//		//Unpark vehicles
+//		UnPark unPark = new UnPark();
+//		unPark.unparkRandomVehicles();
+//		parkingLot.summary();
 
 
 	}

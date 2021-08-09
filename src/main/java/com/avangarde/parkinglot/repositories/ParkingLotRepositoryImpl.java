@@ -124,7 +124,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
 
-    public void occupySpotsFromDB(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
+    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot, int parkingLotID) {
         ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
         List<Vehicle> parkedVehicles = new ArrayList<>();
         //System.out.println("Vehicles: " + vehicleList.size());
@@ -148,7 +148,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
                                 && !parkingSpot.isOcuppied()) {
 
                             System.out.println("Ocuppying DB Spot...");
-                            parkingSpotRepository.parkVehicleOnDBSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID);
+                            parkingSpotRepository.parkVehicleOnSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID, parkingLotID);
                             parkedVehicles.add(vehicle);
                             parkingLot.parkVehicle(vehicle);
                             freeSpotsIDs.remove(spotID);

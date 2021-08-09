@@ -2,6 +2,8 @@ package com.avangarde.parkinglot.repositories;
 
 import com.avangarde.parkinglot.parking.models.ParkingSpot;
 import com.avangarde.parkinglot.parking.models.ParkingSpotFactory;
+import com.avangarde.parkinglot.parking.services.ParkingFloor;
+import com.avangarde.parkinglot.parking.services.ParkingLot;
 import com.avangarde.parkinglot.utils.DBUtil;
 import com.avangarde.parkinglot.vehicle.models.Vehicle;
 
@@ -45,47 +47,9 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         return null;
     }
 
-    //Returns parking spots
-    public List<ParkingSpot> getFreeParkingSpotsFromDB() {
-        List<ParkingSpot> freeSpotsFromDB = new ArrayList<ParkingSpot>();
-
-        //Open connection to DB
-        DBUtil dbUtil = new DBUtil();
-        dbUtil.open();
-
-
-        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false;";
-        //String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
-        ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
-
-        try {
-            Statement stmt = dbUtil.getConn().createStatement();
-            ResultSet resultSet = stmt.executeQuery(sql);
-
-            while (resultSet.next()) {
-//              int spotID = resultSet.getInt("id");
-//				int floorID = resultSet.getInt("floor_id");
-//				int vehicleID = resultSet.getInt("vehicle_id");
-//				boolean isOccupied = resultSet.getBoolean("is_occupied");
-                String spotType = resultSet.getString("spot_type");
-
-                //Create new parking spot and add it to list
-                ParkingSpot parkingSpot = parkingSpotFactory.createParkingSpot(spotType);
-                freeSpotsFromDB.add(parkingSpot);
-            }
-
-            dbUtil.close();
-            return freeSpotsFromDB;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        dbUtil.close();
-        return null;
-    }
 
     //Returns parking spot IDs
-    public List<Integer> getFreeParkingSpotIDsFromDB() { //add to ParkingSpotRepository
+    public List<Integer> getFreeParkingSpotIDs() { //add to ParkingSpotRepository
         List<Integer> freeSpotIDsFromDB = new ArrayList<Integer>();
 
         //Open connection to DB
@@ -101,9 +65,6 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
             while (resultSet.next()) {
                 int spotID = resultSet.getInt("id");
-                int floorID = resultSet.getInt("parking_floor_id");
-                int vehicleID = resultSet.getInt("vehicle_id");
-                boolean isOccupied = resultSet.getBoolean("is_occupied");
                 String spotType = resultSet.getString("spot_type");
 
                 ParkingSpot parkingSpot = parkingSpotFactory.createParkingSpot(spotType);
@@ -123,8 +84,9 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
     }
 
 
-    public boolean parkVehicleOnDBSpot(Vehicle vehicle, int vehicleID, int spotID) {
-        String sql = "UPDATE " +PARKING_SPOTS_TABLE_NAME+ " SET is_occupied = true, vehicle_id = ? WHERE id= ?;";
+    public boolean parkVehicleOnSpot(Vehicle vehicle, int vehicleID, int spotID, int parkingLotID) {
+        String sql = "UPDATE " + PARKING_SPOTS_TABLE_NAME + " SET is_occupied = true, vehicle_id = ? " +
+                "WHERE id= ? AND parking_floor_id IN (SELECT id FROM parking.parking_floors WHERE parking_lot_id = ?);";
 
         DBUtil dbUtil = new DBUtil();
 
@@ -133,6 +95,7 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
             PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
             pstmt.setInt(1, vehicleID);
             pstmt.setInt(2, spotID);
+            pstmt.setInt(3, parkingLotID);
             pstmt.executeUpdate();
             return true;
 
