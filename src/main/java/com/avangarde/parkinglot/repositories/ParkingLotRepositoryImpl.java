@@ -131,29 +131,46 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
         System.out.println("Empty parking spots: " + freeSpotsIDs.size() + "\n");
         //String freeSpotsIDsString = Arrays.toString(freeSpotsIDs.toArray()).replace("[","").replace("]","");
         int count = 0;
+        boolean reset = false;
 
 
         //Check if the given list has any free parking spots
         if (freeSpotsIDs.size() !=0 ) {
 
 
-            while(!(count >= freeSpotsIDs.size()) || !(count >= vehicleList.size())) {
+            while(!reset) {
 
                 for(Vehicle vehicle : vehicleList) {
                     System.out.println("Your vehicle: " + vehicle);
 
                     for (Integer spotID : freeSpotsIDs) {
-
                         ParkingSpot parkingSpot = parkingSpotRepository.findByIdParkingSpot(spotID);
+
                         if (vehicle.getType().toString().equals(parkingSpot.getType().toString())
                                 && !parkingSpot.isOcuppied()) {
+
                             System.out.println("Ocuppying DB Spot...");
                             parkingSpotRepository.parkVehicleOnDBSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID);
                             parkedVehicles.add(vehicle);
                             parkingLot.parkVehicle(vehicle);
+                            freeSpotsIDs.remove(spotID);
+                            count++;
                             break;
                         }
-                        count++;
+
+                        if (freeSpotsIDs.size() == 0
+                                || count >= vehicleList.size()) {
+                            reset = true;
+                        }
+                        //!(count >= freeSpotsIDs.size()) || !(count >= vehicleList.size())
+                    }
+
+                    if(!parkedVehicles.contains(vehicle)) {
+                        vehicleList.remove(vehicle);
+                    }
+
+                    if(vehicleList.indexOf(vehicle) == vehicleList.size() - 1) {
+                        reset = true;
                     }
                 }
                 System.out.println(parkedVehicles.size() + " out of " +vehicleList.size() + " vehicles parked \n");

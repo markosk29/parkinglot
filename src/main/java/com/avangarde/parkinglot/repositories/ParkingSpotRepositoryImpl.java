@@ -54,8 +54,8 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         dbUtil.open();
 
 
-        //String sql = "SELECT * FROM PARKING_SPOTS_TABLE_NAME WHERE is_occupied = false;";
-        String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
+        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false;";
+        //String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
         ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
 
         try {
@@ -92,8 +92,7 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         DBUtil dbUtil = new DBUtil();
         dbUtil.open();
 
-        String sql = "SELECT * FROM PARKING_SPOTS_TABLE_NAME WHERE is_occupied = false;";
-        //String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
+        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false;";
         ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
 
         try {
@@ -125,11 +124,9 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
 
     public boolean parkVehicleOnDBSpot(Vehicle vehicle, int vehicleID, int spotID) {
-        String sql = "UPDATE PARKING_SPOTS_TABLE_NAME SET is_occupied = true, vehicle_id = ? WHERE id= ?;";
-        //String sql = "UPDATE parking.parking_spots SET is_occupied = true, vehicle_id = ? WHERE id= ? ;";
+        String sql = "UPDATE " +PARKING_SPOTS_TABLE_NAME+ " SET is_occupied = true, vehicle_id = ? WHERE id= ?;";
 
         DBUtil dbUtil = new DBUtil();
-
 
         try {
             dbUtil.open();
