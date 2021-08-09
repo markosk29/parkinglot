@@ -116,7 +116,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
     public List<ParkingFloor> findFloorsByLotId(int id) throws SQLException {
-        ParkingFloorRepositoryImpl parkingFloorRepository = new ParkingFloorRepositoryImpl();
+        com.avangarde.parkinglot.repositories.ParkingFloorRepositoryImpl parkingFloorRepository = new ParkingFloorRepositoryImpl();
         StringBuilder sql = new StringBuilder("SELECT id FROM " + PARKING_FLOOR_TABLE_NAME + " WHERE " + PARKING_FLOOR_ID_PARKING_LOT_COMLUMN_NAME + " = ? " + ";");
         List<ParkingFloor> floors = new ArrayList<>();
         DBUtil dbUtil = new DBUtil();
@@ -145,7 +145,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
 
-    public void occupySpotsFromDB(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
+    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot, int parkingLotID) {
         ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
         List<Vehicle> parkedVehicles = new ArrayList<>();
         //System.out.println("Vehicles: " + vehicleList.size());
@@ -169,7 +169,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
                                 && !parkingSpot.isOccupied()) {
 
                             System.out.println("Ocuppying DB Spot...");
-                            parkingSpotRepository.parkVehicleOnDBSpot(vehicle, vehicleList.indexOf(vehicle) + 1, spotID);
+                            parkingSpotRepository.parkVehicleOnSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID, parkingLotID);
                             parkedVehicles.add(vehicle);
                             parkingLot.parkVehicle(vehicle);
                             freeSpotsIDs.remove(spotID);

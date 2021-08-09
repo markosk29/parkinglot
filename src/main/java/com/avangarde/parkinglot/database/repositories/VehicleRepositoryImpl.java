@@ -181,7 +181,11 @@ public class VehicleRepositoryImpl implements VehicleRepository {
                     }
                 }
 
-                freeSpots.put(String.valueOf(entry.getKey()), count);
+                if(freeSpots.containsKey(String.valueOf(entry.getKey()))) {
+                    freeSpots.put((String.valueOf(entry.getKey())), freeSpots.get(String.valueOf(entry.getKey())) + count);
+                } else {
+                    freeSpots.put(String.valueOf(entry.getKey()), count);
+                }
             }
         }
 

@@ -1,9 +1,9 @@
-package com.avangarde.parkinglot.database.repositories;
+package com.avangarde.parkinglot.repositories;
 
-import com.avangarde.parkinglot.parking.ParkingSpotFactory;
-import com.avangarde.parkinglot.parking.SpotType;
-import com.avangarde.parkinglot.parking.entities.ParkingFloor;
-import com.avangarde.parkinglot.parking.entities.ParkingSpot;
+import com.avangarde.parkinglot.parking.models.ParkingSpot;
+import com.avangarde.parkinglot.parking.models.ParkingSpotFactory;
+import com.avangarde.parkinglot.parking.models.SpotType;
+import com.avangarde.parkinglot.parking.services.ParkingFloor;
 import com.avangarde.parkinglot.utils.DBUtil;
 
 import java.sql.PreparedStatement;
