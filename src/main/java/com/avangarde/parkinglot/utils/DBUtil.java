@@ -6,6 +6,7 @@ public class
 DBUtil {
     public static final String USER = "postgres";
     public static final String PASS = "postgres";
+    //public static final String PASS = "123456789";
     public static final String URL = "jdbc:postgresql://localhost/parking_db";
     private Connection conn;
 
