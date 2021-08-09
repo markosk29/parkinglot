@@ -124,7 +124,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
 
-    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot, int parkingLotID) {
+    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
         ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
         List<Vehicle> parkedVehicles = new ArrayList<>();
         //System.out.println("Vehicles: " + vehicleList.size());
@@ -134,7 +134,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
         boolean reset = false;
 
         //Check if the given list has any free parking spots
-        if (freeSpotsIDs.size() !=0 ) {
+        if (freeSpotsIDs.size() != 0 ) {
 
             while(!reset) {
 
@@ -148,7 +148,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
                                 && !parkingSpot.isOcuppied()) {
 
                             System.out.println("Ocuppying DB Spot...");
-                            parkingSpotRepository.parkVehicleOnSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID, parkingLotID);
+                            parkingSpotRepository.parkVehicleOnSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID);
                             parkedVehicles.add(vehicle);
                             parkingLot.parkVehicle(vehicle);
                             freeSpotsIDs.remove(spotID);
@@ -160,15 +160,17 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
                             reset = true;
                         }
                     }
+
                     if(!parkedVehicles.contains(vehicle)) {
                         vehicleList.remove(vehicle);
                     }
+
                     if(vehicleList.indexOf(vehicle) == vehicleList.size() - 1) {
                         reset = true;
                     }
                 }
-                System.out.println(parkedVehicles.size() + " out of " +vehicleList.size() + " vehicles parked \n");
             }
+            System.out.println(parkedVehicles.size() + " out of " +vehicleList.size() + " vehicles parked \n");
         } else {
             System.out.println("There are no parking spots available at this time.");
         }
