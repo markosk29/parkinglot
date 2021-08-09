@@ -145,7 +145,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
 
-    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot, int parkingLotID) {
+    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
         ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
         List<Vehicle> parkedVehicles = new ArrayList<>();
         //System.out.println("Vehicles: " + vehicleList.size());
@@ -156,43 +156,46 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
 
         //Check if the given list has any free parking spots
         if (freeSpotsIDs.size() != 0) {
+            if (freeSpotsIDs.size() != 0) {
 
-            while (!reset) {
+                while (!reset) {
 
-                for (Vehicle vehicle : vehicleList) {
-                    System.out.println("Your vehicle: " + vehicle);
+                    for (Vehicle vehicle : vehicleList) {
+                        System.out.println("Your vehicle: " + vehicle);
 
-                    for (Integer spotID : freeSpotsIDs) {
-                        ParkingSpot parkingSpot = parkingSpotRepository.findByIdParkingSpot(spotID);
+                        for (Integer spotID : freeSpotsIDs) {
+                            ParkingSpot parkingSpot = parkingSpotRepository.findByIdParkingSpot(spotID);
 
-                        if (vehicle.getType().toString().equals(parkingSpot.getType().toString())
-                                && !parkingSpot.isOccupied()) {
+                            if (vehicle.getType().toString().equals(parkingSpot.getType().toString())
+                                    && !parkingSpot.isOccupied()) {
 
-                            System.out.println("Ocuppying DB Spot...");
-                            parkingSpotRepository.parkVehicleOnSpot(vehicle,vehicleList.indexOf(vehicle) + 1, spotID, parkingLotID);
-                            parkedVehicles.add(vehicle);
-                            parkingLot.parkVehicle(vehicle);
-                            freeSpotsIDs.remove(spotID);
-                            count++;
-                            break;
+                                System.out.println("Ocuppying DB Spot...");
+                                parkingSpotRepository.parkVehicleOnSpot(vehicle, vehicleList.indexOf(vehicle) + 1, spotID);
+                                parkedVehicles.add(vehicle);
+                                parkingLot.parkVehicle(vehicle);
+                                freeSpotsIDs.remove(spotID);
+                                count++;
+                                break;
+                            }
+                            if (freeSpotsIDs.size() == 0
+                                    || count >= vehicleList.size()) {
+                                reset = true;
+                            }
                         }
-                        if (freeSpotsIDs.size() == 0
-                                || count >= vehicleList.size()) {
+
+                        if (!parkedVehicles.contains(vehicle)) {
+                            vehicleList.remove(vehicle);
+                        }
+
+                        if (vehicleList.indexOf(vehicle) == vehicleList.size() - 1) {
                             reset = true;
                         }
                     }
-                    if (!parkedVehicles.contains(vehicle)) {
-                        vehicleList.remove(vehicle);
-                    }
-                    if (vehicleList.indexOf(vehicle) == vehicleList.size() - 1) {
-                        reset = true;
-                    }
                 }
                 System.out.println(parkedVehicles.size() + " out of " + vehicleList.size() + " vehicles parked \n");
+            } else {
+                System.out.println("There are no parking spots available at this time.");
             }
-        } else {
-            System.out.println("There are no parking spots available at this time.");
         }
     }
 }
-

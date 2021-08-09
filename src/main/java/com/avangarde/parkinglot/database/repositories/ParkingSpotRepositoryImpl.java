@@ -8,7 +8,6 @@ import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,47 +71,37 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
 
     //Returns parking spot IDs
-    public List<Integer> getFreeParkingSpotIDs() { //add to ParkingSpotRepository
-        List<Integer> freeSpotIDsFromDB = new ArrayList<Integer>();
+    public List<Integer> getFreeParkingSpotIDs(int parkingLotID) { //add to ParkingSpotRepository
+        List<Integer> freeSpotIDs = new ArrayList<Integer>();
 
         //Open connection to DB
         DBUtil dbUtil = new DBUtil();
-        dbUtil.open();
 
-        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false;";
-        ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
+        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false AND parking_floor_id IN (SELECT id FROM parking.parking_floors WHERE parking_lot_id = ?);";
+
+        ResultSet resultSet = null;
 
         try {
-            Statement stmt = dbUtil.getConn().createStatement();
-            ResultSet resultSet = stmt.executeQuery(sql);
-
+            dbUtil.open();
+            PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
+            pstmt.setInt(1, parkingLotID);
+            resultSet = pstmt.executeQuery();
             while (resultSet.next()) {
                 int spotID = resultSet.getInt("id");
-                int floorID = resultSet.getInt("parking_floor_id");
-                int vehicleID = resultSet.getInt("vehicle_id");
-                boolean isOccupied = resultSet.getBoolean("is_occupied");
-                String spotType = resultSet.getString("spot_type");
-
-                ParkingSpot parkingSpot = parkingSpotFactory.createParkingSpot(spotType);
-
-                //Add spot ID to list
-                freeSpotIDsFromDB.add(spotID);
+                freeSpotIDs.add(spotID);
             }
-            return freeSpotIDsFromDB;
+            return freeSpotIDs;
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            dbUtil.close();
         }
-
+        dbUtil.close();
         return null;
     }
 
 
-    public boolean parkVehicleOnSpot(Vehicle vehicle, int vehicleID, int spotID, int parkingLotID) {
-        String sql = "UPDATE " + PARKING_SPOTS_TABLE_NAME + " SET is_occupied = true, vehicle_id = ? " +
-                "WHERE id= ? AND parking_floor_id IN (SELECT id FROM parking.parking_floors WHERE parking_lot_id = ?);";
+    public boolean parkVehicleOnSpot(Vehicle vehicle, int vehicleID, int spotID) {
+        String sql = "UPDATE " + PARKING_SPOTS_TABLE_NAME + " SET is_occupied = true, vehicle_id = ? " + " WHERE id= ?;";
 
         DBUtil dbUtil = new DBUtil();
 
@@ -121,7 +110,6 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
             PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
             pstmt.setInt(1, vehicleID);
             pstmt.setInt(2, spotID);
-            pstmt.setInt(3, parkingLotID);
             pstmt.executeUpdate();
             return true;
 
