@@ -20,7 +20,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     public static final String VEHICLE_TYPE_COLUMN_NAME = "vehicle_type";
     public static final String VEHICLE_PLATE_COLUMN_NAME = "plate";
 
-    private List<Vehicle> vehicles;
+    private final List<Vehicle> vehicles;
 
     public VehicleRepositoryImpl() {
         this.vehicles = new ArrayList<>();
@@ -36,7 +36,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
             statement.setString(2, vehicle.getPlate());
             var result = statement.executeQuery();
             if (result.next()) {
-                System.out.println("Inserted vehicle with id = " + result.getInt("id"));
+//                System.out.println("Inserted vehicle with id = " + result.getInt("id"));
                 return result.getInt("id");
             }
             return -1;
@@ -98,10 +98,9 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            dbUtil.close();
         }
-
-        dbUtil.close();
-
         return vehicles;
     }
 
@@ -130,9 +129,9 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            dbUtil.close();
         }
-
-        dbUtil.close();
 
         return false;
     }
@@ -163,6 +162,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
             e.printStackTrace();
         } finally {
             resultSet.close();
+            dbUtil.close();
         }
         return null;
     }

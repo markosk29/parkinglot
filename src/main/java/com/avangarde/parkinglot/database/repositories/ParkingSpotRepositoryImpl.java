@@ -28,7 +28,7 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
             statement.setString(3, parkingSpot.getType().toString());
             var result = statement.executeQuery();
             if (result.next()) {
-                System.out.println("Inserted Parking Spot with id = " + result.getInt("id"));
+//                System.out.println("Inserted Parking Spot with id = " + result.getInt("id"));
                 return result.getInt("id");
             }
             return -1;
@@ -63,6 +63,8 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            dbUtil.close();
         }
 
         return null;
@@ -78,7 +80,6 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
 
         String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false;";
-        //String sql = "SELECT * FROM parking.parking_spots WHERE is_occupied = false;";
         ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
 
         try {
@@ -86,24 +87,19 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
             ResultSet resultSet = stmt.executeQuery(sql);
 
             while (resultSet.next()) {
-//              int spotID = resultSet.getInt("id");
-//				int floorID = resultSet.getInt("floor_id");
-//				int vehicleID = resultSet.getInt("vehicle_id");
-//				boolean isOccupied = resultSet.getBoolean("is_occupied");
                 String spotType = resultSet.getString("spot_type");
 
                 //Create new parking spot and add it to list
                 ParkingSpot parkingSpot = parkingSpotFactory.createParkingSpot(spotType);
                 freeSpotsFromDB.add(parkingSpot);
             }
-
-            dbUtil.close();
             return freeSpotsFromDB;
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            dbUtil.close();
         }
-        dbUtil.close();
         return null;
     }
 
@@ -140,8 +136,10 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            dbUtil.close();
         }
-        dbUtil.close();
+
         return null;
     }
 
@@ -161,9 +159,9 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            dbUtil.close();
         }
-
-        dbUtil.close();
         return false;
     }
 }

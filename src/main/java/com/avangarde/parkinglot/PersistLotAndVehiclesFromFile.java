@@ -4,33 +4,34 @@ import com.avangarde.parkinglot.database.repositories.*;
 import com.avangarde.parkinglot.IO.read.ReadFromFileImpl;
 import com.avangarde.parkinglot.utils.Utils;
 
-public class Persist {
+public class PersistLotAndVehiclesFromFile {
 
    private static final String INPUT_PATH = Utils.resourcesPath() + "input.txt";
-   private static ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();
-   private static ParkingFloorRepository parkingFloorRepository = new ParkingFloorRepositoryImpl();
-   private static ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepositoryImpl();
-   private static VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
+   private final ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();
+   private final ParkingFloorRepository parkingFloorRepository = new ParkingFloorRepositoryImpl();
+   private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepositoryImpl();
+   private final VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
 
     public static void main (String[] args) { // PersistTest
-        persistDBwithFileInput();
+        var persist = new PersistLotAndVehiclesFromFile();
+        persist.persistDBwithFileInput();
         // visually check DB
     }
 
-    public static void persistDBwithFileInput() {
+    public void persistDBwithFileInput() {
         var inputFile = new ReadFromFileImpl();
         storeParking(inputFile);
         storeVehicles(inputFile);
     }
 
-    private static void storeVehicles(ReadFromFileImpl inputFile) {
+    private void storeVehicles(ReadFromFileImpl inputFile) {
         var vehicles = inputFile.readVehicles(INPUT_PATH);
         for (var vehicle : vehicles) {
             vehicle.setId(vehicleRepository.createOne(vehicle));
         }
     }
 
-    private static void storeParking(ReadFromFileImpl inputFile) {
+    private void storeParking(ReadFromFileImpl inputFile) {
         // read from file
         var lot = inputFile.readParkingLot(INPUT_PATH); // also creates dependencies (floors, spots)
         // store

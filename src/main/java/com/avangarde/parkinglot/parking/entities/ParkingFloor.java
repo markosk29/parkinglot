@@ -77,13 +77,13 @@ public class ParkingFloor extends Identity {
             for (ParkingSpot ps : spotPairs.get(SpotType.valueOf(spotType))
             ) {
                 if (ps.spotAvailable()) {
-                    System.out.println("Occupying spot.....");
+
                     ps.occupySpot();
                     return true;
                 }
             }
         }
-        System.out.println("No spots available on floor: " + this.parkingFloorNumber);
+
         return false;
     }
 

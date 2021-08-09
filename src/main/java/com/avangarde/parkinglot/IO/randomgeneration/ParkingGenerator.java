@@ -16,7 +16,7 @@ public class ParkingGenerator {
     public static final int MIN_NUMBER_OF_SPOTS = 0;
     public static final int MAX_NUMBER_OF_SPOTS = 150;
 
-    private FloorBuilder floorBuilder = new FloorBuilderImpl();
+    private final FloorBuilder floorBuilder = new FloorBuilderImpl();
 
     /**
      * TODO: Extract method in a separate interface
@@ -60,10 +60,7 @@ public class ParkingGenerator {
      * @return boolean
      */
     private static boolean acceptOrDecline() {
-        if (rand(0, 1) == 0) {
-            return false;
-        }
-        return true;
+        return rand(0, 1) != 0;
     }
 
 }

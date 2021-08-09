@@ -18,7 +18,7 @@ public class VehiclesAsStringImpl implements VehicleAsString {
         {
             if (vehicle != null) {
 
-                stringBuilder.append(vehicle.toString()).append("\n");
+                stringBuilder.append(vehicle).append("\n");
             }
         }
 

@@ -9,6 +9,7 @@ import com.avangarde.parkinglot.utils.DBUtil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +18,10 @@ import java.util.Map;
 public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
     public static final String PARKING_FLOOR_TABLE_NAME = "parking.parking_floors";
     public static final String PARKING_SPOTS_TABLE_NAME = "parking.parking_spots";
-    public static final String PARKING_FLOOR_NUMBER_COLUMN ="parking_floor_number";
+    public static final String PARKING_FLOOR_NUMBER_COLUMN = "parking_floor_number";
     public static final String PARKING_SPOT_IS_OCCUPIED_COLUMN_NAME = "is_occupied";
     public static final String PARKING_SPOT_SPOT_TYPE_COLUMN_NAME = "spot_type";
-    public static final String PARKING_FLOOR_ID_COLUMN_NAME="parking_floor_id";
+    public static final String PARKING_FLOOR_ID_COLUMN_NAME = "parking_floor_id";
 
 
     @Override
@@ -33,16 +34,14 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
             statement.setInt(2, parkingFloor.getParkingFloorNumber());
             ResultSet result = statement.executeQuery();
             if (result.next()) {
-                System.out.println("Inserted Parking Floor with id = " + result.getInt("id"));
+//                System.out.println("Inserted Parking Floor with id = " + result.getInt("id"));
                 return result.getInt("id");
             }
             return -1;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return -1;
-        }
-        finally {
+        } finally {
             dbUtil.close();
         }
     }
@@ -55,8 +54,7 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
         ParkingFloor parkingFloor = null;
         ResultSet resultSet = null;
 
-        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql))
-        {
+        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql)) {
 
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
@@ -69,10 +67,9 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
             resultSet.close();
+            dbUtil.close();
         }
 
         return null;
@@ -80,14 +77,13 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
 
 
     public List<ParkingSpot> findSpotsByFloorId(int id) throws SQLException {
-        String sql = "SELECT "+ PARKING_SPOT_IS_OCCUPIED_COLUMN_NAME + ", "+ PARKING_SPOT_SPOT_TYPE_COLUMN_NAME +
-                " FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE "+ PARKING_FLOOR_ID_COLUMN_NAME + "=?" + ";";
+        String sql = "SELECT " + PARKING_SPOT_IS_OCCUPIED_COLUMN_NAME + ", " + PARKING_SPOT_SPOT_TYPE_COLUMN_NAME +
+                " FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE " + PARKING_FLOOR_ID_COLUMN_NAME + "=?" + ";";
         List<ParkingSpot> spots = new ArrayList<>();
         DBUtil dbUtil = new DBUtil();
         dbUtil.open();
         ResultSet resultSet = null;
-        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql))
-        {
+        try (PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql)) {
             ParkingSpotFactory parkingSpotFactory = new ParkingSpotFactory();
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
@@ -99,10 +95,9 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
             resultSet.close();
+            dbUtil.close();
         }
 
         return spots;
@@ -141,13 +136,12 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
                 int floorCountFromDB = resultSet.getInt("count");
                 floorCount += floorCountFromDB;
             }
-            dbUtil.close();
             return floorCount;
-
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            dbUtil.close();
         }
-        dbUtil.close();
         return -1;
     }
 }

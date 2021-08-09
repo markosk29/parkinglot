@@ -1,7 +1,5 @@
-package com.avangarde.parkinglot.repositories;
+package com.avangarde.parkinglot.database.repositories;
 
-import com.avangarde.parkinglot.database.repositories.ParkingFloorRepositoryImpl;
-import com.avangarde.parkinglot.database.repositories.ParkingSpotRepositoryImpl;
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.parking.entities.ParkingSpot;
@@ -35,7 +33,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
              var result = statement.executeQuery(sql)) {
             // Process the ResultSet object
             if (result.next()) {
-                System.out.println("Inserted Parking Lot with id = " + result.getInt("id"));
+//                System.out.println("Inserted Parking Lot with id = " + result.getInt("id"));
                 return result.getInt("id");
             }
             return -1;
@@ -72,6 +70,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
             throwables.printStackTrace();
         } finally {
             resultSet.close();
+            dbUtil.close();
         }
 
         return null;
@@ -107,9 +106,9 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            dbUtil.close();
         }
-
-        dbUtil.close();
 
         System.out.println("Failed to find the latest parking lot.");
 
@@ -139,6 +138,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
             throwables.printStackTrace();
         } finally {
             resultSet.close();
+            dbUtil.close();
         }
 
         return floors;

@@ -41,7 +41,7 @@ public class ParkingLot extends Identity {
         for (var pf : floors
         ) {
             if (pf.occupySpotOnFloor(vehicle)) {
-                System.out.println(String.valueOf(vehicle.getType()) + " parked!");
+                System.out.println(vehicle.getType() + " parked!");
                 return true;
             }
         }
