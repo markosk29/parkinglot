@@ -98,32 +98,4 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository{
         return spotPairs;
     }
 
-    public int getFloorCountFromDB() throws SQLException {
-        int floorCount = 0;
-
-        //Open connection to DB
-        DBUtil dbUtil = new DBUtil();
-        dbUtil.open();
-
-
-        String sql = "SELECT COUNT(id) FROM " + PARKING_FLOOR_TABLE_NAME + " WHERE id IS NOT NULL;";
-        //String sql = "SELECT COUNT(id) FROM parking.parking_floors WHERE id IS NOT NULL;";
-
-        try {
-            Statement stmt = dbUtil.getConn().createStatement();
-            ResultSet resultSet = stmt.executeQuery(sql);
-
-            while (resultSet.next()) {
-                int floorCountFromDB = resultSet.getInt("count");
-                floorCount += floorCountFromDB;
-            }
-            dbUtil.close();
-            return floorCount;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        dbUtil.close();
-        return -1;
-    }
 }
