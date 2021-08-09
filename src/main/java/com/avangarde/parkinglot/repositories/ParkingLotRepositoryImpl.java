@@ -133,10 +133,8 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
         int count = 0;
         boolean reset = false;
 
-
         //Check if the given list has any free parking spots
         if (freeSpotsIDs.size() !=0 ) {
-
 
             while(!reset) {
 
@@ -157,18 +155,14 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
                             count++;
                             break;
                         }
-
                         if (freeSpotsIDs.size() == 0
                                 || count >= vehicleList.size()) {
                             reset = true;
                         }
-                        //!(count >= freeSpotsIDs.size()) || !(count >= vehicleList.size())
                     }
-
                     if(!parkedVehicles.contains(vehicle)) {
                         vehicleList.remove(vehicle);
                     }
-
                     if(vehicleList.indexOf(vehicle) == vehicleList.size() - 1) {
                         reset = true;
                     }

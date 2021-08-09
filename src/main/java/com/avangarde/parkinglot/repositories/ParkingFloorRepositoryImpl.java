@@ -106,7 +106,7 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository{
         dbUtil.open();
 
 
-        String sql = "SELECT COUNT(id) FROM PARKING_FLOOR_TABLE_NAME WHERE id IS NOT NULL;";
+        String sql = "SELECT COUNT(id) FROM " + PARKING_FLOOR_TABLE_NAME + " WHERE id IS NOT NULL;";
         //String sql = "SELECT COUNT(id) FROM parking.parking_floors WHERE id IS NOT NULL;";
 
         try {
