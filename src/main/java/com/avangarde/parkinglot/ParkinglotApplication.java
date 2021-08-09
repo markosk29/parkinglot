@@ -1,9 +1,7 @@
 package com.avangarde.parkinglot;
 
 
-import com.avangarde.parkinglot.database.repositories.ParkingLotRepositoryImpl;
-import com.avangarde.parkinglot.database.repositories.ParkingSpotRepositoryImpl;
-import com.avangarde.parkinglot.database.repositories.VehicleRepositoryImpl;
+import com.avangarde.parkinglot.database.repositories.*;
 
 import java.sql.SQLException;
 
@@ -20,7 +18,7 @@ public class ParkinglotApplication {
         var latestVehicles = vehiclesRepository.loadLatestVehicles(latestLot);
         latestLot.summary();
         // 3. PARK & UNPARK VEHICLES
-        parkingLotRepository.occupySpotsFromDB(latestVehicles, parkingSpotRepository.getFreeParkingSpotIDsFromDB(), latestLot);
+        parkingLotRepository.occupySpots(latestVehicles, parkingSpotRepository.getFreeParkingSpotIDs(), latestLot, latestLot.getId());
         latestLot.summary();
         var unPark = new UnPark();
         unPark.unparkRandomVehicles();

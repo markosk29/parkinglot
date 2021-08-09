@@ -116,7 +116,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
     public List<ParkingFloor> findFloorsByLotId(int id) throws SQLException {
-        com.avangarde.parkinglot.repositories.ParkingFloorRepositoryImpl parkingFloorRepository = new ParkingFloorRepositoryImpl();
+        ParkingFloorRepositoryImpl parkingFloorRepository = new ParkingFloorRepositoryImpl();
         StringBuilder sql = new StringBuilder("SELECT id FROM " + PARKING_FLOOR_TABLE_NAME + " WHERE " + PARKING_FLOOR_ID_PARKING_LOT_COMLUMN_NAME + " = ? " + ";");
         List<ParkingFloor> floors = new ArrayList<>();
         DBUtil dbUtil = new DBUtil();

@@ -1,9 +1,9 @@
-package com.avangarde.parkinglot.repositories;
+package com.avangarde.parkinglot.database.repositories;
 
-import com.avangarde.parkinglot.parking.models.ParkingSpot;
-import com.avangarde.parkinglot.parking.models.ParkingSpotFactory;
-import com.avangarde.parkinglot.parking.models.SpotType;
-import com.avangarde.parkinglot.parking.services.ParkingFloor;
+import com.avangarde.parkinglot.parking.ParkingSpotFactory;
+import com.avangarde.parkinglot.parking.SpotType;
+import com.avangarde.parkinglot.parking.entities.ParkingFloor;
+import com.avangarde.parkinglot.parking.entities.ParkingSpot;
 import com.avangarde.parkinglot.utils.DBUtil;
 
 import java.sql.PreparedStatement;
@@ -115,33 +115,5 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
             }
         }
         return spotPairs;
-    }
-
-    public int getFloorCountFromDB() throws SQLException {
-        int floorCount = 0;
-
-        //Open connection to DB
-        DBUtil dbUtil = new DBUtil();
-        dbUtil.open();
-
-
-        String sql = "SELECT COUNT(id) FROM " + PARKING_FLOOR_TABLE_NAME + " WHERE id IS NOT NULL;";
-        //String sql = "SELECT COUNT(id) FROM parking.parking_floors WHERE id IS NOT NULL;";
-
-        try {
-            Statement stmt = dbUtil.getConn().createStatement();
-            ResultSet resultSet = stmt.executeQuery(sql);
-
-            while (resultSet.next()) {
-                int floorCountFromDB = resultSet.getInt("count");
-                floorCount += floorCountFromDB;
-            }
-            return floorCount;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            dbUtil.close();
-        }
-        return -1;
     }
 }
