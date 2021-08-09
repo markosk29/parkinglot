@@ -127,14 +127,13 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
         ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
         List<Vehicle> parkedVehicles = new ArrayList<>();
-        //System.out.println("Vehicles: " + vehicleList.size());
         System.out.println("Empty parking spots: " + freeSpotsIDs.size() + "\n");
         //String freeSpotsIDsString = Arrays.toString(freeSpotsIDs.toArray()).replace("[","").replace("]","");
         int count = 0;
         boolean reset = false;
 
         //Check if the given list has any free parking spots
-        if (freeSpotsIDs.size() != 0 ) {
+        if (freeSpotsIDs != null ) {
 
             while(!reset) {
 

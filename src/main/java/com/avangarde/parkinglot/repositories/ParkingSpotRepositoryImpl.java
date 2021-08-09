@@ -50,13 +50,13 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
 
 
     //Returns parking spot IDs
-    public List<Integer> getFreeParkingSpotIDs(int parkingLotID) { //add to ParkingSpotRepository
+    public List<Integer> getFreeParkingSpotIDs(int parkingLotID) {
         List<Integer> freeSpotIDs = new ArrayList<Integer>();
 
         //Open connection to DB
         DBUtil dbUtil = new DBUtil();
 
-        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false AND parking_floor_id IN (SELECT id FROM parking.parking_floors WHERE parking_lot_id = ?);";
+        String sql = "SELECT * FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE " + PARKING_SPOT_IS_OCCUPIED_COLUMN_NAME + " = false AND parking_floor_id IN (SELECT id FROM parking.parking_floors WHERE parking_lot_id = ?);";
 
         ResultSet resultSet = null;
 
@@ -65,10 +65,13 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
             PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
             pstmt.setInt(1, parkingLotID);
             resultSet = pstmt.executeQuery();
-            while (resultSet.next()) {
-                int spotID = resultSet.getInt("id");
-                freeSpotIDs.add(spotID);
-            }
+
+                while (resultSet.next()) {
+
+                    int spotID = resultSet.getInt("id");
+                    freeSpotIDs.add(spotID);
+                }
+
             return freeSpotIDs;
 
         } catch (SQLException e) {
