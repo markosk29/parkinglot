@@ -21,15 +21,15 @@ public class ParkinglotApplication {
 		VehicleRepositoryImpl vehicleRepository = new VehicleRepositoryImpl();
 
 		//Fetch parking lot from DB and store it
-		ParkingLot parkingLot = parkingLotRepository.findByIdParkingLot(1);
+		ParkingLot parkingLot = parkingLotRepository.findByIdParkingLot(3);
 		parkingLot.summary();
 
 		//Fetch free parking spots and vehicles lists
-		List<Integer> freeSpotIDs = parkingSpotRepository.getFreeParkingSpotIDs();
+		List<Integer> freeSpotIDs = parkingSpotRepository.getFreeParkingSpotIDs(3);
 		List<Vehicle> vehicleList = vehicleRepository.loadLatestVehicles(parkingLot);
 
 		//Park vehicles
-		parkingLotRepository.occupySpots(vehicleList, freeSpotIDs, parkingLot, 2);
+		parkingLotRepository.occupySpots(vehicleList, freeSpotIDs, parkingLot);
 		parkingLot.summary();
 
 //		//Unpark vehicles
