@@ -11,10 +11,10 @@ import java.util.List;
 
 public class ParkingGenerator {
     private static final int MIN_FLOORS = 2;
-    private static final int MAX_FLOORS = 10;
+    private static final int MAX_FLOORS = 5;
 
     public static final int MIN_NUMBER_OF_SPOTS = 0;
-    public static final int MAX_NUMBER_OF_SPOTS = 150;
+    public static final int MAX_NUMBER_OF_SPOTS = 50;
 
     private final FloorBuilder floorBuilder = new FloorBuilderImpl();
 

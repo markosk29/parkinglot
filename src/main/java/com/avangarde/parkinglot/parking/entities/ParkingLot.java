@@ -1,6 +1,7 @@
 package com.avangarde.parkinglot.parking.entities;
 
 import com.avangarde.parkinglot.database.Identity;
+import com.avangarde.parkinglot.database.repositories.ParkingSpotRepositoryImpl;
 import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 
@@ -69,7 +70,7 @@ public class ParkingLot extends Identity {
         for (ParkingFloor floor:
                 floors) {
             System.out.print("Floor " + floor.getParkingFloorNumber() + ":\n" + floor.getTotalSpotsInParkingLot());
-            System.out.print("Free spots: " + floor.getFreeSpotsSummary() + "\n");
+            System.out.print("Free spots: " + new ParkingSpotRepositoryImpl().getFreeSpotsFromFloor(floor.getParkingFloorNumber()) + "\n");
             System.out.println();
         }
     }

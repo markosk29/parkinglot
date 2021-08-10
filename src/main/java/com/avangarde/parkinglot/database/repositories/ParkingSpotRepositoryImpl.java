@@ -90,6 +90,7 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
                 int spotID = resultSet.getInt("id");
                 freeSpotIDs.add(spotID);
             }
+            System.out.println(freeSpotIDs.size());
             return freeSpotIDs;
 
         } catch (SQLException e) {
@@ -99,6 +100,32 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         return null;
     }
 
+    public int getFreeSpotsFromFloor(int parkingFloorId) { //add to ParkingSpotRepository
+        List<Integer> freeSpotIDs = new ArrayList<Integer>();
+
+        //Open connection to DB
+        DBUtil dbUtil = new DBUtil();
+
+        String sql = "SELECT COUNT(ID) FROM " + PARKING_SPOTS_TABLE_NAME + " WHERE is_occupied = false AND parking_floor_id = ?;";
+
+        ResultSet resultSet = null;
+
+        try {
+            dbUtil.open();
+            PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
+            pstmt.setInt(1, parkingFloorId);
+            resultSet = pstmt.executeQuery();
+            resultSet.next();
+
+            return resultSet.getInt("count");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        dbUtil.close();
+
+        return 0;
+    }
 
     public boolean parkVehicleOnSpot(Vehicle vehicle, int vehicleID, int spotID) {
         String sql = "UPDATE " + PARKING_SPOTS_TABLE_NAME + " SET is_occupied = true, vehicle_id = ? " + " WHERE id= ?;";

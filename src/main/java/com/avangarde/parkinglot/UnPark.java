@@ -1,5 +1,6 @@
 package com.avangarde.parkinglot;
 
+import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.utils.DBUtil;
 
 import java.sql.*;
@@ -12,11 +13,10 @@ public class UnPark {
     public static final String PARKING_SPOT_IS_OCCUPIED_COLUMN_NAME = "is_occupied";
     public static final String PARKING_SPOT_VEHICLE_ID_COLUMN_NAME = "vehicle_id";
 
-
-
     public void unparkRandomVehicles() throws SQLException {
         List<Integer> vehicleIdList = getVehiclesIds();
         int numberOfVehiclesToUnpark = rand(1, vehicleIdList.size());
+
        if(vehicleIdList.size()!=0) {
            System.out.println("Number of vehicles to unpark: " + numberOfVehiclesToUnpark);
        }
@@ -24,7 +24,6 @@ public class UnPark {
             while (numberOfVehiclesToUnpark > 0) {
                 int randomVehicleIdIndex = rand(0, vehicleIdList.size() - 1);
                 int randomVehicleId = vehicleIdList.get(randomVehicleIdIndex);
-                System.out.println(randomVehicleId);
                 if (freeSpotUpdateByVehicleId(randomVehicleId) &&
                         deleteVehicleIdFromParkingSpot(randomVehicleId)) {
                     System.out.println("Vehicle with id " + randomVehicleId + " left the parking lot.");

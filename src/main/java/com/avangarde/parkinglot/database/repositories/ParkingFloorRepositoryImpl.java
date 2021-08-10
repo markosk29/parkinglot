@@ -62,6 +62,7 @@ public class ParkingFloorRepositoryImpl implements ParkingFloorRepository {
                 int floorID = resultSet.getInt(PARKING_FLOOR_NUMBER_COLUMN);
                 List<ParkingSpot> parkingSpots = findSpotsByFloorId(floorID);
                 parkingFloor = new ParkingFloor.ParkingFloorBuilder().floorID(floorID).spotPairs(convertListToMapOfParkingSpots(parkingSpots)).build();
+                parkingFloor.setId(resultSet.getInt("id"));
             }
             return parkingFloor;
 

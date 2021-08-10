@@ -25,13 +25,18 @@ public class PersistLotAndVehiclesFromFile {
     }
 
     private void storeVehicles(ReadFromFileImpl inputFile) {
+        System.out.println("Storing parking spots into DB...");
         var vehicles = inputFile.readVehicles(INPUT_PATH);
         for (var vehicle : vehicles) {
             vehicle.setId(vehicleRepository.createOne(vehicle));
         }
+
+        System.out.println("Added " +vehicles.size()+ " vehicles into DB.");
     }
 
     private void storeParking(ReadFromFileImpl inputFile) {
+        System.out.println("Storing parking spots into DB...");
+        int numberOfSpots = 0;
         // read from file
         var lot = inputFile.readParkingLot(INPUT_PATH); // also creates dependencies (floors, spots)
         // store
@@ -43,8 +48,12 @@ public class PersistLotAndVehiclesFromFile {
                 for (var spot : spotPair.getValue()) {
                     spot.setId(parkingSpotRepository.createOne(spot, floor.getId()));
                     spot.setParkingFloorId(floor.getId());
+
+                    numberOfSpots++;
                 }
             }
         }
+
+        System.out.println("Added " +numberOfSpots+ " parking spots to DB.");
     }
 }

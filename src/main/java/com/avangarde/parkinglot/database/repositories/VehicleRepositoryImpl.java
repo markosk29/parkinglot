@@ -83,9 +83,13 @@ public class VehicleRepositoryImpl implements VehicleRepository {
                 if (freeSpots.containsKey(resultSet.getString("vehicle_type").toUpperCase()) &&
                         freeSpots.get(resultSet.getString("vehicle_type").toUpperCase()) > 0) {
 
-                    vehicles.add(VehicleBuilderImpl.builder()
+                    Vehicle vehicle = VehicleBuilderImpl.builder()
                             .createVehicle(resultSet.getString("vehicle_type").toUpperCase(),
-                                    resultSet.getString("plate")));
+                                    resultSet.getString("plate"));
+
+                    vehicle.setId(resultSet.getInt("id"));
+
+                    vehicles.add(vehicle);
 
                     freeSpots.replace(resultSet.getString("vehicle_type").toUpperCase(),
                             freeSpots.get(resultSet.getString("vehicle_type").toUpperCase()) - 1);

@@ -4,6 +4,7 @@ import com.avangarde.parkinglot.parking.entities.ParkingFloor;
 import com.avangarde.parkinglot.parking.entities.ParkingLot;
 import com.avangarde.parkinglot.parking.entities.ParkingSpot;
 import com.avangarde.parkinglot.utils.DBUtil;
+import com.avangarde.parkinglot.vehicle.entities.Car;
 import com.avangarde.parkinglot.vehicle.entities.Vehicle;
 import org.postgresql.PGStatement;
 
@@ -102,7 +103,10 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
 
             System.out.println("Latest parking lot loaded from DB.");
 
-            return new ParkingLot(floors);
+            ParkingLot parkingLot = new ParkingLot(floors);
+            parkingLot.setId(parkingLotId);
+
+            return parkingLot;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -156,46 +160,44 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
 
         //Check if the given list has any free parking spots
         if (freeSpotsIDs.size() != 0) {
-            if (freeSpotsIDs.size() != 0) {
 
-                while (!reset) {
+            for (Vehicle vehicle : vehicleList) {
+                System.out.println("Your vehicle: " + vehicle.getType());
 
-                    for (Vehicle vehicle : vehicleList) {
-                        System.out.println("Your vehicle: " + vehicle);
+                for (Integer spotID : freeSpotsIDs) {
+                    ParkingSpot parkingSpot = parkingSpotRepository.findByIdParkingSpot(spotID);
 
-                        for (Integer spotID : freeSpotsIDs) {
-                            ParkingSpot parkingSpot = parkingSpotRepository.findByIdParkingSpot(spotID);
+                    if (vehicle.getType().toString().equals(parkingSpot.getType().toString())
+                            && !parkingSpot.isOccupied()) {
 
-                            if (vehicle.getType().toString().equals(parkingSpot.getType().toString())
-                                    && !parkingSpot.isOccupied()) {
-
-                                System.out.println("Ocuppying DB Spot...");
-                                parkingSpotRepository.parkVehicleOnSpot(vehicle, vehicleList.indexOf(vehicle) + 1, spotID);
-                                parkedVehicles.add(vehicle);
-                                parkingLot.parkVehicle(vehicle);
-                                freeSpotsIDs.remove(spotID);
-                                count++;
-                                break;
-                            }
-                            if (freeSpotsIDs.size() == 0
-                                    || count >= vehicleList.size()) {
-                                reset = true;
-                            }
-                        }
-
-                        if (!parkedVehicles.contains(vehicle)) {
-                            vehicleList.remove(vehicle);
-                        }
-
-                        if (vehicleList.indexOf(vehicle) == vehicleList.size() - 1) {
-                            reset = true;
-                        }
+                        System.out.println("Ocuppying DB Spot...");
+                        parkingSpotRepository.parkVehicleOnSpot(vehicle, vehicle.getId(), spotID);
+                        parkedVehicles.add(vehicle);
+                        parkingLot.parkVehicle(vehicle);
+                        freeSpotsIDs.remove(spotID);
+                        count++;
+                        break;
                     }
+//                        if (freeSpotsIDs.size() == 0
+//                                || count >= vehicleList.size()) {
+//                            reset = true;
+//                        }
+//                    }
+//
+//                    if (!parkedVehicles.contains(vehicle)) {
+//                        vehicleList.remove(vehicle);
+//                    }
+//
+//                    if (vehicleList.indexOf(vehicle) == vehicleList.size() - 1
+//                    && vehicleList.size() == 0) {
+//                        reset = true;
+//                    }
                 }
-                System.out.println(parkedVehicles.size() + " out of " + vehicleList.size() + " vehicles parked \n");
-            } else {
-                System.out.println("There are no parking spots available at this time.");
+//
+////            System.out.println(parkedVehicles.size() + " out of " + vehicleList.size() + " vehicles parked \n");
+////        } else {
+////            System.out.println("There are no parking spots available at this time.");
+////        }
             }
         }
-    }
-}
+    }}
