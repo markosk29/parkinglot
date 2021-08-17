@@ -43,7 +43,7 @@ public class JPATest {
         entityManager.persist(lot);
         entityManager.getTransaction().commit();
 
-        ParkingLot foundLot = entityManager.find(ParkingLot.class, (long) 1);
+        ParkingLot foundLot = entityManager.find(ParkingLot.class, 1L);
 
         System.out.println(foundLot.getFloors().get(0).getLevel());
         System.out.println(foundLot.getFloors().get(0).getSpots().iterator().next().getType());

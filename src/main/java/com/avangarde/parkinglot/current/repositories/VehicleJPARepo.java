@@ -32,8 +32,8 @@ public class VehicleJPARepo implements JPARepo<Vehicle> {
     }
 
     @Override
-    public Vehicle read(Vehicle entity) {
-        return entityManager.find(Vehicle.class, entity);
+    public Vehicle read(long id) {
+        return entityManager.find(Vehicle.class, id);
     }
 
     @Override
