@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import java.util.List;
 
 public class VehicleRepository implements JPARepo<Vehicle> {
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public VehicleRepository() {
         EntityManagerFactory entityManagerFactory =
