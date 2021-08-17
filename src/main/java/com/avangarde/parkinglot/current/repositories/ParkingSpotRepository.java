@@ -12,13 +12,10 @@ import java.util.List;
 
 public class ParkingSpotRepository {
     private EntityManager entityManager;
-    private VehicleRepository vehicleRepository;
 
     public ParkingSpotRepository() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("em");
         this.entityManager = emf.createEntityManager();
-
-        this.vehicleRepository = new VehicleRepository();
     }
     public EntityManager getEntityManager() {
         return entityManager;
@@ -80,6 +77,5 @@ public class ParkingSpotRepository {
         entityManager.persist(spotToLeave);
         System.out.println("Freeing spot id=" + spotToLeave.getId() + " type=" + spotToLeave.getType());
         entityManager.getTransaction().commit();
-ghi
     }
 }
