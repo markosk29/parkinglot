@@ -80,7 +80,6 @@ public class ParkingSpotRepository {
         entityManager.persist(spotToLeave);
         System.out.println("Freeing spot id=" + spotToLeave.getId() + " type=" + spotToLeave.getType());
         entityManager.getTransaction().commit();
-
-        vehicleRepository.delete(vehicle);
+ghi
     }
 }
