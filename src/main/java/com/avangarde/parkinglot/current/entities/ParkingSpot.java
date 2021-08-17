@@ -28,6 +28,8 @@ public class ParkingSpot {
     @JoinColumn(name = "vehicle_id", referencedColumnName = "id", unique = true)
     private Vehicle currentVehicle;
 
+
+
     public Long getId() {
         return id;
     }
