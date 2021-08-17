@@ -9,9 +9,11 @@
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/test"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/parking_db"/>
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/parking_db"/>-->
             <property name="javax.persistence.jdbc.user" value="postgres"/>
-            <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="123456789"/>
+<!--            <property name="javax.persistence.jdbc.password" value="postgres"/>-->
         </properties>
     </persistence-unit>
 </persistence>

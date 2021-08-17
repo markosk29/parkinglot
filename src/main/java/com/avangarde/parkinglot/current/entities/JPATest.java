@@ -1,5 +1,6 @@
 package com.avangarde.parkinglot.current.entities;
 
+import com.avangarde.parkinglot.current.repositories.ParkingSpotJPARepo;
 import com.avangarde.parkinglot.old.parking.SpotType;
 import com.avangarde.parkinglot.old.vehicle.VehicleType;
 
@@ -12,6 +13,8 @@ import java.util.Set;
 
 public class JPATest {
     public static void main(String[] args) {
+        ParkingSpotJPARepo parkingSpotJPARepo = new ParkingSpotJPARepo();
+
         EntityManagerFactory entityManagerFactory =
         Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
         var entityManager = entityManagerFactory.createEntityManager();
@@ -42,6 +45,9 @@ public class JPATest {
         entityManager.persist(vehicle);
         entityManager.persist(lot);
         entityManager.getTransaction().commit();
+
+        parkingSpotJPARepo.create(spot);
+
 
         ParkingLot foundLot = entityManager.find(ParkingLot.class, (long) 1);
 

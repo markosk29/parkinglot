@@ -10,13 +10,49 @@ import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingSpotRepository {
+public class ParkingSpotJPARepo implements JPARepo{
     private EntityManager entityManager;
 
-    public ParkingSpotRepository() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("em");
+    public ParkingSpotJPARepo() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
         this.entityManager = emf.createEntityManager();
     }
+
+    @Override
+    public void create(Object entity) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(entity);
+        entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public List<ParkingSpot> readAll() {
+        entityManager.getTransaction().begin();
+
+        return entityManager
+                .createQuery("Select parkingSpot from ParkingSpot parkingSpot", ParkingSpot.class)
+                .getResultList();
+    }
+
+    @Override
+    public Object read(long id) {
+        return entityManager.find(ParkingSpot.class, id);
+    }
+
+    @Override
+    public void update(Object entity) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(entity);
+        entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public void delete(Object entity) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(entity);
+        entityManager.getTransaction().commit();
+    }
+
     public EntityManager getEntityManager() {
         return entityManager;
     }
@@ -26,24 +62,19 @@ public class ParkingSpotRepository {
     }
 
     public List<ParkingSpot> getParkingSpots() {
-        List<ParkingSpot> parkingSpots = new ArrayList<ParkingSpot>();
-        parkingSpots = entityManager.createQuery("from ParkingSpot")
+        List<ParkingSpot> parkingSpots = new ArrayList<>();
+        parkingSpots = entityManager.createQuery("from ParkingSpot", ParkingSpot.class)
                 .getResultList();
         return parkingSpots;
     }
 
     public List<ParkingSpot> getFreeParkingSpots() {
         List<ParkingSpot> freeSpots = new ArrayList<>();
-        freeSpots = entityManager.createQuery("from ParkingSpot parkingSpot where parkingSpot.isOccupied = false")
+        freeSpots = entityManager.createQuery("from ParkingSpot parkingSpot where parkingSpot.isOccupied = false", ParkingSpot.class)
                 .getResultList();
         return freeSpots;
     }
 
-    public void addParkingSpot(ParkingSpot parkingSpot) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(parkingSpot);
-        entityManager.getTransaction().commit();
-    }
 
 
     private ParkingSpot getFirstEmptySpotByType(String type) {
