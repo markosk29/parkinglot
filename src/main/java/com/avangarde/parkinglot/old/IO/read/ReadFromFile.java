@@ -1,7 +1,7 @@
 package com.avangarde.parkinglot.old.IO.read;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.parking.models.ParkingLot;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
 
 import java.io.File;
 import java.util.List;

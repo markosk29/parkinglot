@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingSpotRepository {
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public ParkingSpotRepository() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("em");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
         this.entityManager = emf.createEntityManager();
     }
     public EntityManager getEntityManager() {
@@ -26,15 +26,15 @@ public class ParkingSpotRepository {
     }
 
     public List<ParkingSpot> getParkingSpots() {
-        List<ParkingSpot> parkingSpots = new ArrayList<ParkingSpot>();
-        parkingSpots = entityManager.createQuery("from ParkingSpot")
+        List<ParkingSpot> parkingSpots;
+        parkingSpots = entityManager.createQuery("from ParkingSpot", ParkingSpot.class)
                 .getResultList();
         return parkingSpots;
     }
 
     public List<ParkingSpot> getFreeParkingSpots() {
-        List<ParkingSpot> freeSpots = new ArrayList<>();
-        freeSpots = entityManager.createQuery("from ParkingSpot parkingSpot where parkingSpot.isOccupied = false")
+        List<ParkingSpot> freeSpots;
+        freeSpots = entityManager.createQuery("from ParkingSpot parkingSpot where parkingSpot.isOccupied = false", ParkingSpot.class)
                 .getResultList();
         return freeSpots;
     }
@@ -47,10 +47,11 @@ public class ParkingSpotRepository {
 
 
     private ParkingSpot getFirstEmptySpotByType(String type) {
-        ParkingSpot parkingSpot = (ParkingSpot) entityManager.createQuery("FROM ParkingSpot parkingSpot WHERE parkingSpot.isOccupied = false AND parkingSpot.type = :type")
+        List<ParkingSpot> parkingSpot = entityManager
+                .createQuery("FROM ParkingSpot parkingSpot WHERE parkingSpot.isOccupied = false AND parkingSpot.type = :type", ParkingSpot.class)
                 .setParameter("type", SpotType.valueOf(type))
-                .getSingleResult();
-        return parkingSpot;
+                .getResultList();
+        return parkingSpot.get(0);
     }
 
 

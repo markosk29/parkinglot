@@ -1,10 +1,10 @@
 package com.avangarde.parkinglot.old.IO.randomgeneration;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.parking.SpotType;
 import com.avangarde.parkinglot.old.parking.models.ParkingFloor;
 import com.avangarde.parkinglot.old.parking.models.ParkingLot;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
-import com.avangarde.parkinglot.old.vehicle.VehicleFactory;
+import com.avangarde.parkinglot.old.vehicle.VehicleType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +40,10 @@ public class VehicleGenerator {
     private List<Vehicle> generateListOfVehicles(String type, int total) {
         List<Vehicle> vehicleList = new ArrayList<>();
         for (int vehicleCount = 0; vehicleCount < total; vehicleCount++) {
-            Vehicle vehicle = VehicleFactory.createVehicle(type, createRandomPlate());
+            Vehicle vehicle = new Vehicle();
+            vehicle.setVehicleType(VehicleType.valueOf(type));
+            vehicle.setPlate(createRandomPlate());
+
             vehicleList.add(vehicle);
         }
         return vehicleList;

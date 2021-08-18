@@ -1,6 +1,6 @@
 package com.avangarde.parkinglot.old.IO.write;
 
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
+import com.avangarde.parkinglot.current.entities.Vehicle;
 
 import java.util.List;
 

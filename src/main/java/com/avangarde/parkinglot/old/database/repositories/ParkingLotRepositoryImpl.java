@@ -1,10 +1,10 @@
 package com.avangarde.parkinglot.old.database.repositories;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.parking.models.ParkingFloor;
 import com.avangarde.parkinglot.old.parking.models.ParkingLot;
 import com.avangarde.parkinglot.old.parking.models.ParkingSpot;
 import com.avangarde.parkinglot.old.utils.DBUtil;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
 import org.postgresql.PGStatement;
 
 import java.sql.PreparedStatement;
@@ -148,7 +148,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     }
 
 
-    public void occupySpots(List<Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
+    public void occupySpots(List<com.avangarde.parkinglot.current.entities.Vehicle> vehicleList, List<Integer> freeSpotsIDs, ParkingLot parkingLot) {
         ParkingSpotRepositoryImpl parkingSpotRepository = new ParkingSpotRepositoryImpl();
         List<Vehicle> parkedVehicles = new ArrayList<>();
         //System.out.println("Vehicles: " + vehicleList.size());
@@ -161,12 +161,12 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
         if (freeSpotsIDs.size() != 0) {
 
             for (Vehicle vehicle : vehicleList) {
-                System.out.println("Your vehicle: " + vehicle.getType());
+                System.out.println("Your vehicle: " + vehicle.getVehicleType());
 
                 for (Integer spotID : freeSpotsIDs) {
                     ParkingSpot parkingSpot = parkingSpotRepository.findByIdParkingSpot(spotID);
 
-                    if (vehicle.getType().toString().equals(parkingSpot.getType().toString())
+                    if (vehicle.getVehicleType().toString().equals(parkingSpot.getType().toString())
                             && !parkingSpot.isOccupied()) {
 
                         System.out.println("Ocuppying DB Spot...");
