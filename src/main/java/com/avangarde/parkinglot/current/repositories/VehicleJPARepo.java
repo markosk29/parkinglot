@@ -7,10 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class VehicleRepository implements JPARepo<Vehicle> {
+public class VehicleJPARepo implements JPARepo<Vehicle> {
     private final EntityManager entityManager;
 
-    public VehicleRepository() {
+    public VehicleJPARepo() {
         EntityManagerFactory entityManagerFactory =
             Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
 

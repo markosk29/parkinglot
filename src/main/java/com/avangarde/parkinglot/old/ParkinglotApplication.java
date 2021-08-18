@@ -1,9 +1,10 @@
 package com.avangarde.parkinglot.old;
 
-import java.sql.SQLException;
+import com.avangarde.parkinglot.current.repositories.VehicleJPARepo;
+import com.avangarde.parkinglot.current.services.ParkingLotService;
+import com.avangarde.parkinglot.current.services.VehicleService;
 
-import com.avangarde.parkinglot.current.repositories.VehicleRepository;
-import com.avangarde.parkinglot.old.database.repositories.*;
+import java.sql.SQLException;
 
 public class ParkinglotApplication {
     public static void main(String[] args) throws SQLException {
@@ -11,19 +12,25 @@ public class ParkinglotApplication {
         var persist = new PersistLotAndVehiclesFromFile();
         persist.persistDBwithFileInput();
         // 2. LOAD FROM DB
-        var parkingLotRepository = new ParkingLotRepositoryImpl();
-        VehicleRepository vehicleRepository = new VehicleRepository();
-        var parkingSpotRepository = new ParkingSpotRepositoryImpl();
-        var latestLot = parkingLotRepository.loadLatestParkingLot();
+        var vehicleRepository = new VehicleJPARepo();
+        var parkingLotService = new ParkingLotService();
+        var vehicleService = new VehicleService();
+        var latestLot = parkingLotService.loadLatestParkingLot();
         var latestVehicles = vehicleRepository.readAll();
-        latestLot.summary();
+        parkingLotService.summary(latestLot);
         // 3. PARK & UNPARK VEHICLES
-        parkingLotRepository.occupySpots(latestVehicles, parkingSpotRepository.getFreeParkingSpotIDs(latestLot.getId()), latestLot);
-        latestLot.summary();
-        var unPark = new UnPark();
-        unPark.unparkRandomVehicles();
+        for (var vehicle : latestVehicles) {
+            vehicleService.park(vehicle);
+        }
+//        parkingLotRepository.occupySpots(latestVehicles, parkingSpotRepository.getFreeParkingSpotIDs(latestLot.getId()), latestLot);
+        parkingLotService.summary(latestLot);
+        for (var vehicle : latestVehicles) {
+            vehicleService.unpark(vehicle);
+        }
+//        var unPark = new UnPark();
+//        unPark.unparkRandomVehicles();
         // 4. SHOW PARKING LOT SUMMARY
-        latestLot.summary();
+        parkingLotService.summary(latestLot);
     }
 
 }

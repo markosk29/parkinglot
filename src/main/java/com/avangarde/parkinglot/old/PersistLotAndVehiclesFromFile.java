@@ -1,25 +1,24 @@
 package com.avangarde.parkinglot.old;
 
-import com.avangarde.parkinglot.current.entities.Vehicle;
-import com.avangarde.parkinglot.old.database.repositories.*;
-import com.avangarde.parkinglot.old.IO.read.ReadFromFileImpl;
+import com.avangarde.parkinglot.current.repositories.*;
 import com.avangarde.parkinglot.old.utils.Utils;
-import com.avangarde.parkinglot.current.repositories.VehicleRepository;
 
 public class PersistLotAndVehiclesFromFile {
 
-   private static final String INPUT_PATH = Utils.resourcesPath() + "input.txt";
-   private final ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();
-   private final ParkingFloorRepository parkingFloorRepository = new ParkingFloorRepositoryImpl();
-   private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepositoryImpl();
+    private static final String INPUT_PATH = Utils.resourcesPath() + "input.txt";
+    private final JPARepo parkingLotRepository;
+    private final JPARepo parkingFloorRepository;
+    private final JPARepo parkingSpotRepository;
+    private final JPARepo vehicleRepository;
 
-   private final VehicleRepository vehicleRepository;
+    public PersistLotAndVehiclesFromFile() {
+        this.parkingLotRepository = new ParkingLotJPARepo();
+        this.parkingFloorRepository = new ParkingFloorJPARepo();
+        this.parkingSpotRepository = new ParkingSpotJPARepo();
+        this.vehicleRepository = new ;
+    }
 
-   public PersistLotAndVehiclesFromFile() {
-       this.vehicleRepository = new VehicleRepository();
-   }
-
-    public static void main (String[] args) { // PersistTest
+    public static void main(String[] args) { // PersistTest
         var persist = new PersistLotAndVehiclesFromFile();
         persist.persistDBwithFileInput();
         // visually check DB
@@ -39,7 +38,7 @@ public class PersistLotAndVehiclesFromFile {
             vehicle.setId(vehicle.getId());
         }
 
-        System.out.println("Added " +vehicles.size()+ " vehicles into DB.");
+        System.out.println("Added " + vehicles.size() + " vehicles into DB.");
     }
 
     private void storeParking(ReadFromFileImpl inputFile) {
@@ -62,6 +61,6 @@ public class PersistLotAndVehiclesFromFile {
             }
         }
 
-        System.out.println("Added " +numberOfSpots+ " parking spots to DB.");
+        System.out.println("Added " + numberOfSpots + " parking spots to DB.");
     }
 }
