@@ -4,7 +4,7 @@
              version="2.0">
     <persistence-unit name="com.avangarde.parkinglot">
         <description>Hibernate EntityManager</description>
-        <class>com.avangarde.parkinglot.current.entities.Vehicle</class>
+        <class>com.avangarde.parkinglot.entities.Vehicle</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -12,6 +12,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/test"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <property name = "hibernate.show_sql" value = "true" />
         </properties>
     </persistence-unit>
 </persistence>
