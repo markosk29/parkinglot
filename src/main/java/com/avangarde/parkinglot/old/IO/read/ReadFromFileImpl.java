@@ -1,13 +1,13 @@
 package com.avangarde.parkinglot.old.IO.read;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.IO.write.IParkingLotAsStringImpl;
 import com.avangarde.parkinglot.old.parking.models.ParkingSpot;
 import com.avangarde.parkinglot.old.parking.ParkingSpotFactory;
 import com.avangarde.parkinglot.old.parking.SpotType;
 import com.avangarde.parkinglot.old.parking.models.ParkingFloor;
 import com.avangarde.parkinglot.old.parking.models.ParkingLot;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
-import com.avangarde.parkinglot.old.vehicle.VehicleBuilderImpl;
+import com.avangarde.parkinglot.old.vehicle.VehicleType;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -45,15 +45,16 @@ public class ReadFromFileImpl implements ReadFromFile {
 
         for(String vehicle : vehicleStrings) {
             String[] veh = vehicle.split(" ");
-            Vehicle newVehicle;
+            Vehicle newVehicle = new Vehicle();
 
             if(veh[0].trim().equals("BIKE")) {
-                newVehicle = VehicleBuilderImpl.builder().createVehicle(veh[0].trim(), "N/A");
-            } else {
-                newVehicle = VehicleBuilderImpl.builder().createVehicle(veh[0].trim(), veh[1].trim());
+                newVehicle.setVehicleType(VehicleType.valueOf(veh[0].trim()));
+            } else if(!veh[0].trim().isEmpty()){
+                newVehicle.setVehicleType(VehicleType.valueOf(veh[0].trim()));
+                newVehicle.setPlate(veh[1].trim());
             }
 
-            if(newVehicle != null) {
+            if(newVehicle.getVehicleType() != null) {
                 vehicleList.add(newVehicle);
             }
         }

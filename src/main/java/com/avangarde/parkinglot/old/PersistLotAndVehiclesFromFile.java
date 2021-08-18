@@ -1,8 +1,10 @@
 package com.avangarde.parkinglot.old;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.database.repositories.*;
 import com.avangarde.parkinglot.old.IO.read.ReadFromFileImpl;
 import com.avangarde.parkinglot.old.utils.Utils;
+import com.avangarde.parkinglot.current.repositories.VehicleRepository;
 
 public class PersistLotAndVehiclesFromFile {
 
@@ -10,7 +12,12 @@ public class PersistLotAndVehiclesFromFile {
    private final ParkingLotRepository parkingLotRepository = new ParkingLotRepositoryImpl();
    private final ParkingFloorRepository parkingFloorRepository = new ParkingFloorRepositoryImpl();
    private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepositoryImpl();
-   private final VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
+
+   private final VehicleRepository vehicleRepository;
+
+   public PersistLotAndVehiclesFromFile() {
+       this.vehicleRepository = new VehicleRepository();
+   }
 
     public static void main (String[] args) { // PersistTest
         var persist = new PersistLotAndVehiclesFromFile();
@@ -28,7 +35,8 @@ public class PersistLotAndVehiclesFromFile {
         System.out.println("Storing parking spots into DB...");
         var vehicles = inputFile.readVehicles(INPUT_PATH);
         for (var vehicle : vehicles) {
-            vehicle.setId(vehicleRepository.createOne(vehicle));
+            vehicleRepository.create(vehicle);
+            vehicle.setId(vehicle.getId());
         }
 
         System.out.println("Added " +vehicles.size()+ " vehicles into DB.");

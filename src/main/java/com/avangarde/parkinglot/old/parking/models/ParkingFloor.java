@@ -1,8 +1,8 @@
 package com.avangarde.parkinglot.old.parking.models;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.database.Identity;
 import com.avangarde.parkinglot.old.parking.SpotType;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
 
 import java.util.List;
 import java.util.Map;
@@ -72,7 +72,7 @@ public class ParkingFloor extends Identity {
     }
 
     public boolean occupySpotOnFloor(Vehicle vehicle) {
-        String spotType = String.valueOf(vehicle.getType());
+        String spotType = String.valueOf(vehicle.getVehicleType());
         if (this.spotPairs.containsKey(SpotType.valueOf(spotType))) {
             for (ParkingSpot ps : spotPairs.get(SpotType.valueOf(spotType))
             ) {
@@ -88,7 +88,7 @@ public class ParkingFloor extends Identity {
     }
 
     public boolean leaveSpotOnFloor(Vehicle vehicle) {
-        String spotType = String.valueOf(vehicle.getType());
+        String spotType = String.valueOf(vehicle.getVehicleType());
         if (this.spotPairs.containsKey(SpotType.valueOf(spotType))) {
             for (ParkingSpot ps : spotPairs.get(SpotType.valueOf(spotType))
             ) {

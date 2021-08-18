@@ -1,8 +1,8 @@
 package com.avangarde.parkinglot.old.parking.models;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.database.Identity;
 import com.avangarde.parkinglot.old.database.repositories.ParkingSpotRepositoryImpl;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class ParkingLot extends Identity {
         for (var pf : floors
         ) {
             if (pf.occupySpotOnFloor(vehicle)) {
-                System.out.println(vehicle.getType() + " parked!");
+                System.out.println(vehicle.getVehicleType() + " parked!");
                 return true;
             }
         }

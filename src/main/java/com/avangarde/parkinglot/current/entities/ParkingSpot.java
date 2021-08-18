@@ -21,13 +21,13 @@ public class ParkingSpot {
     private SpotType type;
 
     @ManyToOne
-    @JoinColumn(name = "parking_floor_id", referencedColumnName = "id", nullable = false, unique = true)
+    @JoinColumn(name = "parking_floor_id", referencedColumnName = "id", nullable = false)
     private ParkingFloor floor;
 
     @OneToOne
     @JoinColumn(name = "vehicle_id", referencedColumnName = "id", unique = true)
     private Vehicle currentVehicle;
-
+    
     public Long getId() {
         return id;
     }

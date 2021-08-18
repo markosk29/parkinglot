@@ -1,9 +1,9 @@
 package com.avangarde.parkinglot.old.database.repositories;
 
+import com.avangarde.parkinglot.current.entities.Vehicle;
 import com.avangarde.parkinglot.old.parking.ParkingSpotFactory;
 import com.avangarde.parkinglot.old.parking.models.ParkingSpot;
 import com.avangarde.parkinglot.old.utils.DBUtil;
-import com.avangarde.parkinglot.old.vehicle.models.Vehicle;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,11 +20,11 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
     public int createOne(ParkingSpot parkingSpot, int associatedParkingFloorId) {
         DBUtil dbUtil = new DBUtil();
         dbUtil.open();
-        String sql = "INSERT INTO parking.parking_spots VALUES (DEFAULT, ?, NULL, ?, ?) RETURNING id";
+        String sql = "INSERT INTO parking.parking_spots VALUES (DEFAULT, ?, ?, NULL, ?) RETURNING id";
         try (PreparedStatement statement = dbUtil.getConn().prepareStatement(sql)) {
-            statement.setInt(1, associatedParkingFloorId);
-            statement.setBoolean(2, false);
-            statement.setString(3, parkingSpot.getType().toString());
+            statement.setInt(3, associatedParkingFloorId);
+            statement.setBoolean(1, false);
+            statement.setString(2, parkingSpot.getType().toString());
             var result = statement.executeQuery();
             if (result.next()) {
 //                System.out.println("Inserted Parking Spot with id = " + result.getInt("id"));
@@ -127,7 +127,7 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         return 0;
     }
 
-    public boolean parkVehicleOnSpot(Vehicle vehicle, int vehicleID, int spotID) {
+    public boolean parkVehicleOnSpot(Vehicle vehicle, long vehicleID, int spotID) {
         String sql = "UPDATE " + PARKING_SPOTS_TABLE_NAME + " SET is_occupied = true, vehicle_id = ? " + " WHERE id= ?;";
 
         DBUtil dbUtil = new DBUtil();
@@ -135,7 +135,7 @@ public class ParkingSpotRepositoryImpl implements ParkingSpotRepository {
         try {
             dbUtil.open();
             PreparedStatement pstmt = dbUtil.getConn().prepareStatement(sql);
-            pstmt.setInt(1, vehicleID);
+            pstmt.setLong(1, vehicleID);
             pstmt.setInt(2, spotID);
             pstmt.executeUpdate();
             return true;
