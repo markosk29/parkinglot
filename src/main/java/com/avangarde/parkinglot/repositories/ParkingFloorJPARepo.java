@@ -1,20 +1,20 @@
 package com.avangarde.parkinglot.repositories;
 
 import com.avangarde.parkinglot.entities.ParkingFloor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
+@Repository
 public class ParkingFloorJPARepo implements JPARepo<ParkingFloor> {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
-    public ParkingFloorJPARepo() {
-        EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
-        entityManager = entityManagerFactory.createEntityManager();
+    @Autowired
+    public ParkingFloorJPARepo(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
@@ -26,12 +26,12 @@ public class ParkingFloorJPARepo implements JPARepo<ParkingFloor> {
 
     @Override
     public List<ParkingFloor> readAll() {
-        return entityManager.createQuery("Select floor from ParkingFloor floor",ParkingFloor.class).getResultList();
+        return entityManager.createQuery("Select floor from ParkingFloor floor", ParkingFloor.class).getResultList();
     }
 
     @Override
     public ParkingFloor read(long id) {
-       return entityManager.find(ParkingFloor.class, id);
+        return entityManager.find(ParkingFloor.class, id);
     }
 
     @Override

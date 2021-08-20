@@ -5,12 +5,16 @@ import com.avangarde.parkinglot.entities.ParkingLot;
 import com.avangarde.parkinglot.entities.ParkingSpot;
 import com.avangarde.parkinglot.repositories.JPARepo;
 import com.avangarde.parkinglot.repositories.ParkingLotJPARepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ParkingLotService {
     private final JPARepo repo;
 
-    public ParkingLotService() {
-        this.repo = new ParkingLotJPARepo();
+    @Autowired
+    public ParkingLotService(ParkingLotJPARepo parkingLotJPARepo) {
+        this.repo = parkingLotJPARepo;
     }
 
     public ParkingLot loadLatestParkingLot() {

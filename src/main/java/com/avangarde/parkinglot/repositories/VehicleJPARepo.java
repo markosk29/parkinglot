@@ -1,20 +1,19 @@
 package com.avangarde.parkinglot.repositories;
 
 import com.avangarde.parkinglot.entities.Vehicle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
+@Repository
 public class VehicleJPARepo implements JPARepo<Vehicle> {
     private final EntityManager entityManager;
 
-    public VehicleJPARepo() {
-        EntityManagerFactory entityManagerFactory =
-            Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
-
-        this.entityManager = entityManagerFactory.createEntityManager();
+    @Autowired
+    public VehicleJPARepo(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
@@ -26,9 +25,9 @@ public class VehicleJPARepo implements JPARepo<Vehicle> {
 
     @Override
     public List<Vehicle> readAll() {
-       return this.entityManager
-               .createQuery("SELECT vehicles FROM Vehicle vehicles", Vehicle.class)
-               .getResultList();
+        return this.entityManager
+                .createQuery("SELECT vehicles FROM Vehicle vehicles", Vehicle.class)
+                .getResultList();
     }
 
     @Override

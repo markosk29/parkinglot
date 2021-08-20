@@ -1,21 +1,22 @@
 package com.avangarde.parkinglot.repositories;
 
+import com.avangarde.parkinglot.auxs.intermeds.SpotType;
 import com.avangarde.parkinglot.entities.ParkingSpot;
 import com.avangarde.parkinglot.entities.Vehicle;
-import com.avangarde.parkinglot.auxs.intermeds.SpotType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingSpotJPARepo implements JPARepo{
-    private EntityManager entityManager;
+@Repository
+public class ParkingSpotJPARepo implements JPARepo {
+    private final EntityManager entityManager;
 
-    public ParkingSpotJPARepo() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
-        this.entityManager = emf.createEntityManager();
+    @Autowired
+    public ParkingSpotJPARepo(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
@@ -76,7 +77,6 @@ public class ParkingSpotJPARepo implements JPARepo{
     }
 
 
-
     private ParkingSpot getFirstEmptySpotByType(String type) {
         List<ParkingSpot> parkingSpots = entityManager.createQuery("FROM ParkingSpot parkingSpot WHERE parkingSpot.isOccupied = false AND parkingSpot.type = :type", ParkingSpot.class)
                 .setParameter("type", SpotType.valueOf(type))
@@ -86,7 +86,7 @@ public class ParkingSpotJPARepo implements JPARepo{
 
 
     public ParkingSpot getSpotByVehicle(Vehicle vehicle) {
-         List<ParkingSpot> parkingSpots = entityManager.createQuery("FROM ParkingSpot parkingSpot WHERE parkingSpot.currentVehicle.id = :nr")
+        List<ParkingSpot> parkingSpots = entityManager.createQuery("FROM ParkingSpot parkingSpot WHERE parkingSpot.currentVehicle.id = :nr")
                 .setParameter("nr", vehicle.getId())
                 .getResultList();
         if (parkingSpots.size() == 0) {
@@ -105,13 +105,14 @@ public class ParkingSpotJPARepo implements JPARepo{
 
     public void leaveSpot(Vehicle vehicle) {
         ParkingSpot spotToLeave = getSpotByVehicle(vehicle);
-        if(spotToLeave != null){
-        entityManager.getTransaction().begin();
-        spotToLeave.setOccupied(false);
-        spotToLeave.setCurrentVehicle(null);
-        entityManager.persist(spotToLeave);
-        System.out.println("Freeing spot id=" + spotToLeave.getId() + " type=" + spotToLeave.getType());
-        entityManager.getTransaction().commit();}
+        if (spotToLeave != null) {
+            entityManager.getTransaction().begin();
+            spotToLeave.setOccupied(false);
+            spotToLeave.setCurrentVehicle(null);
+            entityManager.persist(spotToLeave);
+            System.out.println("Freeing spot id=" + spotToLeave.getId() + " type=" + spotToLeave.getType());
+            entityManager.getTransaction().commit();
+        }
 
     }
 }

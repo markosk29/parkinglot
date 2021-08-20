@@ -1,10 +1,13 @@
 package com.avangarde.parkinglot.auxs.intermeds;
 
+import com.avangarde.parkinglot.auxs.fileIO.Utils;
+import com.avangarde.parkinglot.auxs.fileIO.read.ReadFromFileImpl;
 import com.avangarde.parkinglot.entities.ParkingLot;
 import com.avangarde.parkinglot.repositories.*;
-import com.avangarde.parkinglot.auxs.fileIO.read.ReadFromFileImpl;
-import com.avangarde.parkinglot.auxs.fileIO.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PersistLotAndVehiclesFromFile {
 
     private static final String INPUT_PATH = Utils.resourcesPath() + "input.txt";
@@ -13,17 +16,15 @@ public class PersistLotAndVehiclesFromFile {
     private final JPARepo parkingSpotRepository;
     private final JPARepo vehicleRepository;
 
-    public PersistLotAndVehiclesFromFile() {
-        this.parkingLotRepository = new ParkingLotJPARepo();
-        this.parkingFloorRepository = new ParkingFloorJPARepo();
-        this.parkingSpotRepository = new ParkingSpotJPARepo();
-        this.vehicleRepository = new VehicleJPARepo();
-    }
-
-    public static void main(String[] args) { // PersistTest
-        var persist = new PersistLotAndVehiclesFromFile();
-        persist.persistDBwithFileInput();
-        // visually check DB
+    @Autowired
+    public PersistLotAndVehiclesFromFile(ParkingLotJPARepo parkingLotRepository,
+                                         ParkingFloorJPARepo parkingFloorRepository,
+                                         ParkingSpotJPARepo parkingSpotRepository,
+                                         VehicleJPARepo vehicleRepository) {
+        this.parkingLotRepository = parkingLotRepository;
+        this.parkingFloorRepository = parkingFloorRepository;
+        this.parkingSpotRepository = parkingSpotRepository;
+        this.vehicleRepository = vehicleRepository;
     }
 
     public void persistDBwithFileInput() {

@@ -2,15 +2,16 @@ package com.avangarde.parkinglot.services;
 
 import com.avangarde.parkinglot.entities.Vehicle;
 import com.avangarde.parkinglot.repositories.ParkingSpotJPARepo;
-import com.avangarde.parkinglot.repositories.VehicleJPARepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class VehicleService {
-    private final VehicleJPARepo vehicleRepository;
     private final ParkingSpotJPARepo parkingSpotRepository;
 
-    public VehicleService() {
-        this.vehicleRepository = new VehicleJPARepo();
-        this.parkingSpotRepository = new ParkingSpotJPARepo();
+    @Autowired
+    public VehicleService(ParkingSpotJPARepo parkingSpotRepo) {
+        this.parkingSpotRepository = parkingSpotRepo;
     }
 
     public void park(Vehicle vehicle) {
@@ -19,6 +20,5 @@ public class VehicleService {
 
     public void unpark(Vehicle vehicle) {
         this.parkingSpotRepository.leaveSpot(vehicle);
-//        this.vehicleRepository.delete(vehicle);
     }
 }

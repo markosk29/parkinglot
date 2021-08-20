@@ -1,19 +1,19 @@
 package com.avangarde.parkinglot.repositories;
 
 import com.avangarde.parkinglot.entities.ParkingLot;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
+@Repository
 public class ParkingLotJPARepo implements JPARepo<ParkingLot> {
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
-    public ParkingLotJPARepo() {
-        EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("com.avangarde.parkinglot");
-        entityManager = entityManagerFactory.createEntityManager();
+    @Autowired
+    public ParkingLotJPARepo(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
