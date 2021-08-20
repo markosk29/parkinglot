@@ -6,10 +6,12 @@ import com.avangarde.parkinglot.auxs.intermeds.FloorBuilder;
 import com.avangarde.parkinglot.auxs.intermeds.FloorBuilderImpl;
 import com.avangarde.parkinglot.auxs.intermeds.ParkingSpotLotSize;
 import com.avangarde.parkinglot.auxs.intermeds.SpotType;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ParkingGenerator {
     private static final int MIN_FLOORS = 2;
     private static final int MAX_FLOORS = 5;
@@ -17,14 +19,12 @@ public class ParkingGenerator {
     public static final int MIN_NUMBER_OF_SPOTS = 0;
     public static final int MAX_NUMBER_OF_SPOTS = 50;
 
-    private final FloorBuilder floorBuilder = new FloorBuilderImpl();
+    private final FloorBuilder floorBuilder;
 
-    /**
-     * TODO: Extract method in a separate interface
-     * Returns a randomly configured parking lot with all spots free
-     *
-     * @return parking lot
-     */
+    public ParkingGenerator(FloorBuilderImpl floorBuilder) {
+        this.floorBuilder = floorBuilder;
+    }
+
     public ParkingLot createParkingLot() {
         var noOfFloors = rand(MIN_FLOORS, MAX_FLOORS); // inclusive
         var parkingLot = new ParkingLot();
@@ -34,7 +34,6 @@ public class ParkingGenerator {
         }
         return parkingLot;
     }
-
 
     private List<ParkingSpotLotSize> generateRandomSpotLots() {
         List<ParkingSpotLotSize> spotsLots = new ArrayList<>();
@@ -52,9 +51,6 @@ public class ParkingGenerator {
     private static int rand(int min, int max) {
         return (int) (Math.floor((Math.random() * (max - min + 1) + min)));
     }
-
-
-    // HELPER METHODS
 
     /**
      * Randomly chooses between 0 and 1; We use it to decide if we create a particular spot type in a floor

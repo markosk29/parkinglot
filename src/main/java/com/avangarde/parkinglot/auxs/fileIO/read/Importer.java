@@ -5,33 +5,28 @@ import com.avangarde.parkinglot.entities.ParkingSpot;
 import com.avangarde.parkinglot.auxs.intermeds.ParkingSpotLotSize;
 import com.avangarde.parkinglot.auxs.intermeds.SpotType;
 import com.avangarde.parkinglot.auxs.intermeds.FloorBuilder;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
-//////////////////////////
-//NOT FINAL
-//////////////////////////
-//importer
+@Component
 public class Importer {
-    private BufferedInputStream input;
-    private FileInputStream fileInputStream;
 
-    private StringBuilder stringBuilder;
+    private final FloorBuilder floorBuilder;
 
-    private FloorBuilder floorBuilder;
-
-    //createPFloor(int floorNo, List<>)
-    //
+    public Importer(FloorBuilder floorBuilder) {
+        this.floorBuilder = floorBuilder;
+    }
 
     public void getObjectsFromFile(String path) {
-        stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         try {
-            fileInputStream = new FileInputStream(path);
-            input = new BufferedInputStream(fileInputStream);
+            FileInputStream fileInputStream = new FileInputStream(path);
+            BufferedInputStream input = new BufferedInputStream(fileInputStream);
 
             int i;
             while((i = input.read()) != -1) {
@@ -42,8 +37,6 @@ public class Importer {
         }
 
         this.getObjectsFromString(stringBuilder.toString());
-
-        //return stringBuilder.toString();
     }
 
     public void getObjectsFromString(String inputString) {

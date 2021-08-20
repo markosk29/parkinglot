@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 public class ParkingLotService {
     private final JPARepo repo;
 
-    @Autowired
     public ParkingLotService(ParkingLotJPARepo parkingLotJPARepo) {
         this.repo = parkingLotJPARepo;
     }

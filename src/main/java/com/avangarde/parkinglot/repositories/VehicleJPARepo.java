@@ -11,7 +11,6 @@ import java.util.List;
 public class VehicleJPARepo implements JPARepo<Vehicle> {
     private final EntityManager entityManager;
 
-    @Autowired
     public VehicleJPARepo(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

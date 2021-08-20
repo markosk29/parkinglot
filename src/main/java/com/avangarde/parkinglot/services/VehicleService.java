@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class VehicleService {
     private final ParkingSpotJPARepo parkingSpotRepository;
 
-    @Autowired
     public VehicleService(ParkingSpotJPARepo parkingSpotRepo) {
         this.parkingSpotRepository = parkingSpotRepo;
     }

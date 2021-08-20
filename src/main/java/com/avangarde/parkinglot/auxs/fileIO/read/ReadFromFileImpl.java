@@ -7,6 +7,7 @@ import com.avangarde.parkinglot.entities.Vehicle;
 import com.avangarde.parkinglot.auxs.fileIO.write.IParkingLotAsStringImpl;
 import com.avangarde.parkinglot.auxs.intermeds.SpotType;
 import com.avangarde.parkinglot.auxs.intermeds.VehicleType;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
+@Component
 public class ReadFromFileImpl implements ReadFromFile {
 
     private String filePath;

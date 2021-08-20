@@ -16,7 +16,6 @@ public class PersistLotAndVehiclesFromFile {
     private final JPARepo parkingSpotRepository;
     private final JPARepo vehicleRepository;
 
-    @Autowired
     public PersistLotAndVehiclesFromFile(ParkingLotJPARepo parkingLotRepository,
                                          ParkingFloorJPARepo parkingFloorRepository,
                                          ParkingSpotJPARepo parkingSpotRepository,

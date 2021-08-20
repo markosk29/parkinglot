@@ -2,13 +2,12 @@ package com.avangarde.parkinglot.auxs.fileIO.write;
 
 import com.avangarde.parkinglot.entities.Vehicle;
 import com.avangarde.parkinglot.auxs.intermeds.VehicleType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class VehiclesAsStringImpl implements VehicleAsString {
-    public VehiclesAsStringImpl() {
-    }
-
     @Override
     public String write(List<Vehicle> vehicles) {
         StringBuilder stringBuilder = new StringBuilder();

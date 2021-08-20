@@ -12,7 +12,6 @@ public class ParkingFloorJPARepo implements JPARepo<ParkingFloor> {
 
     private final EntityManager entityManager;
 
-    @Autowired
     public ParkingFloorJPARepo(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

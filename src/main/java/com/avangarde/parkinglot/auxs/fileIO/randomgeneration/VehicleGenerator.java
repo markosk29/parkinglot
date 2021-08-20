@@ -4,12 +4,14 @@ import com.avangarde.parkinglot.entities.ParkingFloor;
 import com.avangarde.parkinglot.entities.ParkingLot;
 import com.avangarde.parkinglot.entities.Vehicle;
 import com.avangarde.parkinglot.auxs.intermeds.VehicleType;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+@Component
 public class VehicleGenerator {
 
     public static final int TWO_CHARACTERS = 2;

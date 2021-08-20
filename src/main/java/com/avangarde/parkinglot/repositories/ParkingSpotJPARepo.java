@@ -14,7 +14,6 @@ import java.util.List;
 public class ParkingSpotJPARepo implements JPARepo {
     private final EntityManager entityManager;
 
-    @Autowired
     public ParkingSpotJPARepo(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
