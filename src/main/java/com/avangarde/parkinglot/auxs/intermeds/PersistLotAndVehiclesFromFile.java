@@ -4,7 +4,6 @@ import com.avangarde.parkinglot.auxs.fileIO.Utils;
 import com.avangarde.parkinglot.auxs.fileIO.read.ReadFromFileImpl;
 import com.avangarde.parkinglot.entities.ParkingLot;
 import com.avangarde.parkinglot.repositories.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

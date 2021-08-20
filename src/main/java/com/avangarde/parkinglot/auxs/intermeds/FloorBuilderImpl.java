@@ -3,9 +3,11 @@ package com.avangarde.parkinglot.auxs.intermeds;
 
 import com.avangarde.parkinglot.entities.ParkingFloor;
 import com.avangarde.parkinglot.entities.ParkingSpot;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+@Component
 public class FloorBuilderImpl implements FloorBuilder {
     @Override
     public ParkingFloor createParkingFloor(int floorNo, List<ParkingSpotLotSize> parkingSpotLotSizes) {

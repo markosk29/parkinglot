@@ -1,6 +1,7 @@
 package com.avangarde.parkinglot;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
@@ -9,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 @Configuration
+@ComponentScan("com.avangarde.parkinglot")
 public class AppConfig {
     private final EntityManagerFactory entityManagerFactory;
 
